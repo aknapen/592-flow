@@ -4,11 +4,11 @@ from flow.envs.base import Env
 
 from gym.spaces import Tuple, Dict, MultiDiscrete, Discrete
 from gym.spaces.box import Box
-from flow.networks.traffic_light_grid import ADDITIONAL_NET_PARAMS
+from flow.networks.fleet_grid import ADDITIONAL_NET_PARAMS
 
 ADDITIONAL_ENV_PARAMS = {
     # Number of vehicles in the fleet
-    'num_vehicles': 3,
+    'num_vehicles': 4,
     # Maximum acceleration for autonomous vehicles, in m/s^2
     'max_accel': 3,
     # Maximum deceleration for autonomous vehicles, in m/s^2
@@ -28,14 +28,16 @@ class FleetControlEnv(Env):
     def __init__(self, env_params, sim_params, network, simulator='traci'):
         # Check that all necessary additional environmental parameters have 
         # been specified
+        print("in fleet control env")
         for p in ADDITIONAL_ENV_PARAMS.keys():
             if p not in env_params.additional_params:
                 raise KeyError(
                     'Environment parameter \'{}\' not supplied'.format(p)
                 )
-        
+        print("out2 of  fleet control env")
         super().__init__(env_params, sim_params, network, simulator)
         
+        print("out of  fleet control env")
         # Initialize vehicle destinations (randomly set for now)
         self.destinations = {}
         # Initialize previous positions
@@ -48,6 +50,7 @@ class FleetControlEnv(Env):
     @property
     def action_space(self):
         # Agent can apply acceleration within [-max_decel, max_accel] to each vehicle
+        print("in action space")
         accel_space = Box(
             low=-abs(self.env_params.additional_params['max_decel']),
             high=self.env_params.additional_params['max_accel'],
@@ -73,6 +76,7 @@ class FleetControlEnv(Env):
         #   1. the vehicle's velocity (normalized to network's max velocity)
         #   2. the vehicle's x position in the network
         #   3. the vehicle's y position in the network
+        print("in observation space")
         velocity_space = Box(
             low=0,
             high=1,
@@ -92,7 +96,7 @@ class FleetControlEnv(Env):
         return Tuple(velocity_space, x_space, y_space)
     
     def get_updated_route(self, ids, route_actions):
-    
+        print("in updated route")
         routes = []
         
         
@@ -136,11 +140,15 @@ class FleetControlEnv(Env):
                     
             if not near_intersection:
                 # check if the edge starts with bot{}_{} or top{}_{}
-                if current_edge.startswith("bot") or current_edge.startswith("top"):
+                if current_edge.startswith("bot"):
+                    allowed_actions = [1] 
+                if current_edge.startswith("top"):
                     # Horizontal road - can only go left or right (1 or 3)
-                    allowed_actions = [0, 1]  
+                    allowed_actions = [0]  
+                if current_edge.startswith("right"):
+                    allowed_actions = [2] 
                 else:
-                    allowed_actions = [2, 3]  
+                    allowed_actions =  [3]  
 
             action = route_actions[i]
 
@@ -208,11 +216,12 @@ class FleetControlEnv(Env):
                     elif direction == "left" and direction_map[action] == "right":
                         new_edge = "right{}_{}".format(row, col)
                         
-                routes.append(new_edge)
+                current_route = [new_edge]
             
-        return routes
+        return current_route
 
     def _apply_rl_actions(self, rl_actions):
+        print("in apply rl actions")
         ids = self.k.vehicle.get_rl_ids()
         accel_actions = rl_actions[0]  # First element of tuple is acceleration actions
         route_actions = rl_actions[1]  # Second element of tuple is route actions
@@ -225,20 +234,24 @@ class FleetControlEnv(Env):
         self.k.vehicle.apply_acceleration(ids, accel_actions)
     
     def compute_distance_traveled(self, curr_positions, prev_positions):
-        # Calculate element-wise Euclidean distances of each vehicle
-        distances = np.sqrt(np.power(curr_positions[0] - prev_positions[0], 2) + 
-                           np.power(curr_positions[1] - prev_positions[1], 2))
-        
+        # Calculate element-wise Euclidean distances of each vehicle)
+        if len(prev_positions) > 0 and len(curr_positions) >0:
+            distances = np.sqrt(np.power(curr_positions[0] - prev_positions[0], 2) + 
+                            np.power(curr_positions[1] - prev_positions[1], 2))
+        else:
+            distances = np.zeros(len(curr_positions))
         # Return cumulative distance for the fleet
         return np.sum(distances)
     
     def compute_reward(self, rl_actions, **kwargs):
+        print("in compute reward")
         ids = self.k.vehicle.get_rl_ids()
+        print(ids, len(ids))
         # Get current (x,y) positions for each vehicle
         positions = np.array([self.k.vehicle.get_2d_position(id) for id in ids])
 
         # Initialize previous positions if they don't exist
-        if not self.prev_positions:
+        if self.prev_positions is None:
             self.prev_positions = positions
             return 0  # Return 0 reward on first step
             
@@ -263,8 +276,16 @@ class FleetControlEnv(Env):
         self.prev_positions = positions
 
         # This will be a list of booleans where the ith element is true if positions[i] = destinations[i]
-        destinations_reached = [(np.linalg.norm(positions[i] - self.destinations[ids[i]]) < 5.0) 
-                              for i in range(len(ids))]
+        destinations_reached = []
+        for i in range(len(ids)):
+            # print(i, positions[i], self.destinations[ids[i]], len(self.destinations))
+            if np.linalg.norm(positions[i] - self.destinations[ids[i]]) < 5.0:
+                destinations_reached.append(True)
+            else:
+                destinations_reached.append(False)
+
+        # destinations_reached = [(np.linalg.norm(positions[i] - self.destinations[ids[i]]) < 5.0) 
+                            #   for i in range(len(ids))]
         
         # Agent accumulates -1 rewards for each vehicle that is not at its destination
         route_reward = np.sum(np.array([1 if reached else -1 for reached in destinations_reached]))
@@ -272,6 +293,7 @@ class FleetControlEnv(Env):
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
     def get_state(self):
+        print("in get state")
         ids = self.k.vehicle.get_rl_ids()
         speeds = [self.k.vehicle.get_speed(id) / self.k.network.max_speed() for id in ids]
         pos = [self.k.vehicle.get_2d_position(id) for id in ids]

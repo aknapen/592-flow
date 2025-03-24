@@ -1,7 +1,7 @@
 """Traffic Light Grid example."""
 from flow.controllers.car_following_models import IDMController
 from flow.controllers.rlcontroller import RLController
-from flow.controllers.routing_controllers import ContinuousRouter
+from flow.controllers.routing_controllers import ContinuousRouter, FleetRouter
 from flow.core.params import SumoParams, EnvParams, InitialConfig, NetParams, \
     InFlows
 from flow.core.params import VehicleParams
@@ -9,6 +9,7 @@ from flow.controllers import  GridRouter
 from flow.envs import FleetControlEnv
 from flow.networks import TrafficLightGridNetwork
 from flow.envs.fleet_control_env import ADDITIONAL_ENV_PARAMS
+from flow.networks.fleet_grid import FleetGridNetwork
 
 # time horizon of a single rollout
 HORIZON = 2
@@ -18,7 +19,7 @@ N_ROLLOUTS = 3
 N_CPUS = 2
 # set to True if you would like to run the experiment with inflows of vehicles
 # from the edges, and False otherwise
-USE_INFLOWS = True
+USE_INFLOWS = False
 
 
 def gen_edges(col_num, row_num):
@@ -76,7 +77,7 @@ def get_inflow_params(col_num, row_num, additional_net_params):
     outer_edges = gen_edges(col_num, row_num)
     for i in range(len(outer_edges)):
         inflow.add(
-            veh_type='idm',
+            veh_type='rl',
             edge=outer_edges[i],
             probability=0.25,
             departLane='free',
@@ -170,8 +171,8 @@ vehicles.add(
     #     speed_mode="all_checks",
     # ),
     # TODO: add routing controller
-    routing_controller=(GridRouter, {}),
-    num_vehicles=2)
+    routing_controller=(FleetRouter, {}),
+    num_vehicles=4)
 
 # collect the initialization and network-specific parameters based on the
 # choice to use inflows or not
@@ -194,7 +195,7 @@ flow_params = dict(
     env_name=FleetControlEnv,
 
     # name of the network class the experiment is running on
-    network=TrafficLightGridNetwork,
+    network=FleetGridNetwork,
 
     # simulator that is used by the experiment
     simulator='traci',

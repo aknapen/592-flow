@@ -150,3 +150,16 @@ class I210Router(ContinuousRouter):
             new_route = super().choose_route(env)
 
         return new_route
+class FleetRouter(BaseRouter):
+    """A router used to re-route a vehicle in a flee network.
+
+    Usage
+    -----
+    See base class for usage example.
+    """
+
+    def choose_route(self, env):
+        """See parent class."""
+        if len(env.k.vehicle.get_route(self.veh_id)) == 0:
+            return None
+        return [env.k.vehicle.get_route(self.veh_id)[0]]
