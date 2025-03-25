@@ -1,0 +1,1702 @@
+flags Namespace(checkpoint_path=None, exp_config='flowagent', num_cpus=4, num_steps=5, rl_trainer='rllib', rollout_size=1)
+== Status ==
+Memory usage on this node: 11.1/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 3/3 CPUs, 0/0 GPUs, 0.0/1.22 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+-------+
+| Trial name                      | status   | loc   |
+|---------------------------------+----------+-------|
+| PPO_FleetControlEnv-v0_fde60820 | RUNNING  |       |
++---------------------------------+----------+-------+
+
+
+[2m[36m(pid=139925)[0m 2025-03-25 09:49:40,620	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=139925)[0m in fleet control env
+[2m[36m(pid=139925)[0m out2 of  fleet control env
+[2m[36m(pid=139925)[0m 2025-03-25 09:49:40,968	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=139925)[0m out of  fleet control env
+[2m[36m(pid=139925)[0m in observation space
+[2m[36m(pid=139925)[0m in action space
+[2m[36m(pid=139925)[0m in observation space
+[2m[36m(pid=139925)[0m in observation space
+[2m[36m(pid=139925)[0m in observation space
+[2m[36m(pid=139925)[0m in action space
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139925)[0m     raise e
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139925)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139925)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139925)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139925)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139925)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139925)[0m     self.config["num_workers"])
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139925)[0m     logdir=self.logdir)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139925)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139925)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139925)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139925)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139925)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139925)[0m     self._initialize_loss()
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139925)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139925)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139925)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139925)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139925)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139925)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139925)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139925)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139925)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 268: ordinal not in range(128)
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=139925)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139925)[0m     raise self.actor_init_error
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139925)[0m     raise e
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139925)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139925)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139925)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139925)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139925)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139925)[0m     self.config["num_workers"])
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139925)[0m     logdir=self.logdir)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139925)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139925)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139925)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139925)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139925)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139925)[0m     self._initialize_loss()
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139925)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139925)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139925)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139925)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139925)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139925)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139925)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139925)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139925)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 481: ordinal not in range(128)
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139925)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139925)[0m     raise self.actor_init_error
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139925)[0m     raise self.actor_init_error
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139925)[0m     raise e
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139925)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139925)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139925)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139925)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139925)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139925)[0m     self.config["num_workers"])
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139925)[0m     logdir=self.logdir)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139925)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139925)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139925)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139925)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139925)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139925)[0m     self._initialize_loss()
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139925)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139925)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139925)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139925)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139925)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139925)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139925)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139925)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139925)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 552: ordinal not in range(128)
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139925)[0m 
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139925)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139925)[0m Traceback (most recent call last):
+[2m[36m(pid=139925)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139925)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139925)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139925)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+== Status ==
+Memory usage on this node: 11.5/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 3/3 CPUs, 0/0 GPUs, 0.0/1.22 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+-------+
+| Trial name                      | status   | loc   |
+|---------------------------------+----------+-------|
+| PPO_FleetControlEnv-v0_fde60820 | RUNNING  |       |
++---------------------------------+----------+-------+
+Number of errored trials: 1
++---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------+
+| Trial name                      |   # failures | error file                                                                                                   |
+|---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------|
+| PPO_FleetControlEnv-v0_fde60820 |            1 | /home/sitota/ray_results/fleet_control/PPO_FleetControlEnv-v0_fde60820_2025-03-25_09-49-37a6ygrc_s/error.txt |
++---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------+
+
+[2m[36m(pid=139924)[0m 2025-03-25 09:49:44,883	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=139924)[0m 2025-03-25 09:49:45,026	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=139924)[0m in fleet control env
+[2m[36m(pid=139924)[0m out2 of  fleet control env
+[2m[36m(pid=139924)[0m out of  fleet control env
+[2m[36m(pid=139924)[0m in observation space
+[2m[36m(pid=139924)[0m in action space
+[2m[36m(pid=139924)[0m in observation space
+[2m[36m(pid=139924)[0m in observation space
+[2m[36m(pid=139924)[0m in observation space
+[2m[36m(pid=139924)[0m in action space
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139924)[0m     raise e
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139924)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139924)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139924)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139924)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139924)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139924)[0m     self.config["num_workers"])
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139924)[0m     logdir=self.logdir)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139924)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139924)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139924)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139924)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139924)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139924)[0m     self._initialize_loss()
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139924)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139924)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139924)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139924)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139924)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139924)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139924)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139924)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139924)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 268: ordinal not in range(128)
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=139924)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139924)[0m     raise self.actor_init_error
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139924)[0m     raise e
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139924)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139924)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139924)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139924)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139924)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139924)[0m     self.config["num_workers"])
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139924)[0m     logdir=self.logdir)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139924)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139924)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139924)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139924)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139924)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139924)[0m     self._initialize_loss()
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139924)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139924)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139924)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139924)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139924)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139924)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139924)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139924)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139924)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 481: ordinal not in range(128)
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139924)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139924)[0m     raise self.actor_init_error
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139924)[0m     raise self.actor_init_error
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139924)[0m     raise e
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139924)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139924)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139924)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139924)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139924)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139924)[0m     self.config["num_workers"])
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139924)[0m     logdir=self.logdir)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139924)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139924)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139924)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139924)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139924)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139924)[0m     self._initialize_loss()
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139924)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139924)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139924)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139924)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139924)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139924)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139924)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139924)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139924)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 552: ordinal not in range(128)
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139924)[0m 
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139924)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139924)[0m Traceback (most recent call last):
+[2m[36m(pid=139924)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139924)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139924)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139924)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139926)[0m 2025-03-25 09:49:48,745	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=139926)[0m in fleet control env
+[2m[36m(pid=139926)[0m out2 of  fleet control env
+[2m[36m(pid=139926)[0m 2025-03-25 09:49:48,893	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=139926)[0m out of  fleet control env
+[2m[36m(pid=139926)[0m in observation space
+[2m[36m(pid=139926)[0m in action space
+[2m[36m(pid=139926)[0m in observation space
+[2m[36m(pid=139926)[0m in observation space
+[2m[36m(pid=139926)[0m in observation space
+[2m[36m(pid=139926)[0m in action space
+== Status ==
+Memory usage on this node: 11.3/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 3/3 CPUs, 0/0 GPUs, 0.0/1.22 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+-------+
+| Trial name                      | status   | loc   |
+|---------------------------------+----------+-------|
+| PPO_FleetControlEnv-v0_fde60820 | RUNNING  |       |
++---------------------------------+----------+-------+
+Number of errored trials: 1
++---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------+
+| Trial name                      |   # failures | error file                                                                                                   |
+|---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------|
+| PPO_FleetControlEnv-v0_fde60820 |            3 | /home/sitota/ray_results/fleet_control/PPO_FleetControlEnv-v0_fde60820_2025-03-25_09-49-37a6ygrc_s/error.txt |
++---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------+
+
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139926)[0m     raise e
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139926)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139926)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139926)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139926)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139926)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139926)[0m     self.config["num_workers"])
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139926)[0m     logdir=self.logdir)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139926)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139926)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139926)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139926)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139926)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139926)[0m     self._initialize_loss()
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139926)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139926)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139926)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139926)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139926)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139926)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139926)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139926)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139926)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 268: ordinal not in range(128)
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=139926)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139926)[0m     raise self.actor_init_error
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139926)[0m     raise e
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139926)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139926)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139926)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139926)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139926)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139926)[0m     self.config["num_workers"])
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139926)[0m     logdir=self.logdir)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139926)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139926)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139926)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139926)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139926)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139926)[0m     self._initialize_loss()
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139926)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139926)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139926)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139926)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139926)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139926)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139926)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139926)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139926)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 481: ordinal not in range(128)
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139926)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139926)[0m     raise self.actor_init_error
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=139926)[0m     raise self.actor_init_error
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=139926)[0m     raise e
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=139926)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=139926)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=139926)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=139926)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=139926)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=139926)[0m     self.config["num_workers"])
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=139926)[0m     logdir=self.logdir)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=139926)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=139926)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=139926)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=139926)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=139926)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=139926)[0m     self._initialize_loss()
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=139926)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=139926)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=139926)[0m     model_config=policy.config["model"])
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=139926)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=139926)[0m     self.child_distributions, split_list)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=139926)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=139926)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=139926)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=139926)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 552: ordinal not in range(128)
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=139926)[0m 
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=139926)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=139926)[0m Traceback (most recent call last):
+[2m[36m(pid=139926)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=139926)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=139926)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=139926)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140305)[0m 2025-03-25 09:49:52,964	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=140305)[0m in fleet control env
+[2m[36m(pid=140305)[0m out2 of  fleet control env
+[2m[36m(pid=140305)[0m 2025-03-25 09:49:53,107	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=140305)[0m out of  fleet control env
+[2m[36m(pid=140305)[0m in observation space
+[2m[36m(pid=140305)[0m in action space
+[2m[36m(pid=140305)[0m in observation space
+[2m[36m(pid=140305)[0m in observation space
+[2m[36m(pid=140305)[0m in observation space
+[2m[36m(pid=140305)[0m in action space
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140305)[0m     raise e
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140305)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140305)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140305)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140305)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140305)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140305)[0m     self.config["num_workers"])
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140305)[0m     logdir=self.logdir)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140305)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140305)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140305)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140305)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140305)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140305)[0m     self._initialize_loss()
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140305)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140305)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140305)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140305)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140305)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140305)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140305)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140305)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140305)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 268: ordinal not in range(128)
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140305)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140305)[0m     raise self.actor_init_error
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140305)[0m     raise e
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140305)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140305)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140305)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140305)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140305)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140305)[0m     self.config["num_workers"])
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140305)[0m     logdir=self.logdir)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140305)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140305)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140305)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140305)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140305)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140305)[0m     self._initialize_loss()
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140305)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140305)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140305)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140305)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140305)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140305)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140305)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140305)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140305)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 481: ordinal not in range(128)
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140305)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140305)[0m     raise self.actor_init_error
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140305)[0m     raise self.actor_init_error
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140305)[0m     raise e
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140305)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140305)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140305)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140305)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140305)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140305)[0m     self.config["num_workers"])
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140305)[0m     logdir=self.logdir)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140305)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140305)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140305)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140305)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140305)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140305)[0m     self._initialize_loss()
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140305)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140305)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140305)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140305)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140305)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140305)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140305)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140305)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140305)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 552: ordinal not in range(128)
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140305)[0m 
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140305)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140305)[0m Traceback (most recent call last):
+[2m[36m(pid=140305)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140305)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140305)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140305)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140388)[0m 2025-03-25 09:49:57,127	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=140388)[0m in fleet control env
+[2m[36m(pid=140388)[0m out2 of  fleet control env
+[2m[36m(pid=140388)[0m 2025-03-25 09:49:57,289	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=140388)[0m out of  fleet control env
+[2m[36m(pid=140388)[0m in observation space
+[2m[36m(pid=140388)[0m in action space
+[2m[36m(pid=140388)[0m in observation space
+[2m[36m(pid=140388)[0m in observation space
+[2m[36m(pid=140388)[0m in observation space
+[2m[36m(pid=140388)[0m in action space
+== Status ==
+Memory usage on this node: 11.3/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 3/3 CPUs, 0/0 GPUs, 0.0/1.22 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+-------+
+| Trial name                      | status   | loc   |
+|---------------------------------+----------+-------|
+| PPO_FleetControlEnv-v0_fde60820 | RUNNING  |       |
++---------------------------------+----------+-------+
+Number of errored trials: 1
++---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------+
+| Trial name                      |   # failures | error file                                                                                                   |
+|---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------|
+| PPO_FleetControlEnv-v0_fde60820 |            5 | /home/sitota/ray_results/fleet_control/PPO_FleetControlEnv-v0_fde60820_2025-03-25_09-49-37a6ygrc_s/error.txt |
++---------------------------------+--------------+--------------------------------------------------------------------------------------------------------------+
+
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140388)[0m     raise e
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140388)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140388)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140388)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140388)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140388)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140388)[0m     self.config["num_workers"])
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140388)[0m     logdir=self.logdir)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140388)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140388)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140388)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140388)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140388)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140388)[0m     self._initialize_loss()
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140388)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140388)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140388)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140388)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140388)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140388)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140388)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140388)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140388)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 268: ordinal not in range(128)
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140388)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140388)[0m     raise self.actor_init_error
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140388)[0m     raise e
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140388)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140388)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140388)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140388)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140388)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140388)[0m     self.config["num_workers"])
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140388)[0m     logdir=self.logdir)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140388)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140388)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140388)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140388)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140388)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140388)[0m     self._initialize_loss()
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140388)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140388)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140388)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140388)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140388)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140388)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140388)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140388)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140388)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 481: ordinal not in range(128)
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140388)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140388)[0m     raise self.actor_init_error
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140388)[0m     raise self.actor_init_error
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140388)[0m     raise e
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140388)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140388)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140388)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140388)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140388)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140388)[0m     self.config["num_workers"])
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140388)[0m     logdir=self.logdir)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140388)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140388)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140388)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140388)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140388)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140388)[0m     self._initialize_loss()
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140388)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140388)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140388)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140388)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140388)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140388)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140388)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140388)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140388)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 552: ordinal not in range(128)
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140388)[0m 
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140388)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140388)[0m Traceback (most recent call last):
+[2m[36m(pid=140388)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140388)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140388)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140388)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140471)[0m 2025-03-25 09:50:01,360	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=140471)[0m in fleet control env
+[2m[36m(pid=140471)[0m out2 of  fleet control env
+[2m[36m(pid=140471)[0m 2025-03-25 09:50:01,505	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=140471)[0m out of  fleet control env
+[2m[36m(pid=140471)[0m in observation space
+[2m[36m(pid=140471)[0m in action space
+[2m[36m(pid=140471)[0m in observation space
+[2m[36m(pid=140471)[0m in observation space
+[2m[36m(pid=140471)[0m in observation space
+[2m[36m(pid=140471)[0m in action space
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140471)[0m     raise e
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140471)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140471)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140471)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140471)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140471)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140471)[0m     self.config["num_workers"])
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140471)[0m     logdir=self.logdir)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140471)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140471)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140471)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140471)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140471)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140471)[0m     self._initialize_loss()
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140471)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140471)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140471)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140471)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140471)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140471)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140471)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140471)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140471)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 268: ordinal not in range(128)
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140471)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140471)[0m     raise self.actor_init_error
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140471)[0m     raise e
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140471)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140471)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140471)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140471)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140471)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140471)[0m     self.config["num_workers"])
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140471)[0m     logdir=self.logdir)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140471)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140471)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140471)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140471)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140471)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140471)[0m     self._initialize_loss()
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140471)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140471)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140471)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140471)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140471)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140471)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140471)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140471)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140471)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 481: ordinal not in range(128)
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140471)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140471)[0m     raise self.actor_init_error
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140471)[0m     raise self.actor_init_error
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140471)[0m     raise e
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140471)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140471)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140471)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140471)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140471)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140471)[0m     self.config["num_workers"])
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140471)[0m     logdir=self.logdir)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140471)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140471)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140471)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140471)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140471)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140471)[0m     self._initialize_loss()
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140471)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140471)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140471)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140471)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140471)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140471)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140471)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140471)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140471)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 552: ordinal not in range(128)
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140471)[0m 
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140471)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140471)[0m Traceback (most recent call last):
+[2m[36m(pid=140471)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140471)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140471)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140471)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140585)[0m 2025-03-25 09:50:05,641	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=140585)[0m in fleet control env
+[2m[36m(pid=140585)[0m out2 of  fleet control env
+[2m[36m(pid=140585)[0m 2025-03-25 09:50:05,800	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=140585)[0m out of  fleet control env
+[2m[36m(pid=140585)[0m in observation space
+[2m[36m(pid=140585)[0m in action space
+[2m[36m(pid=140585)[0m in observation space
+[2m[36m(pid=140585)[0m in observation space
+[2m[36m(pid=140585)[0m in observation space
+[2m[36m(pid=140585)[0m in action space
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140585)[0m     raise e
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140585)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140585)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140585)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140585)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140585)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140585)[0m     self.config["num_workers"])
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140585)[0m     logdir=self.logdir)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140585)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140585)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140585)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140585)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140585)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140585)[0m     self._initialize_loss()
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140585)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140585)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140585)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140585)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140585)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140585)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140585)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140585)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140585)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140585)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140585)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 268: ordinal not in range(128)
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140585)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140585)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140585)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140585)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140585)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 386: ordinal not in range(128)
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 626, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/worker.py", line 190, in reraise_actor_init_error
+[2m[36m(pid=140585)[0m     raise self.actor_init_error
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 633, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 634, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 636, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 619, in ray._raylet.execute_task.function_executor
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 774, in actor_method_executor
+[2m[36m(pid=140585)[0m     raise e
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/function_manager.py", line 766, in actor_method_executor
+[2m[36m(pid=140585)[0m     method_returns = method(actor, *args, **kwargs)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 90, in __init__
+[2m[36m(pid=140585)[0m     Trainer.__init__(self, config, env, logger_creator)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 398, in __init__
+[2m[36m(pid=140585)[0m     Trainable.__init__(self, config, logger_creator)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/tune/trainable.py", line 96, in __init__
+[2m[36m(pid=140585)[0m     self._setup(copy.deepcopy(self.config))
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 523, in _setup
+[2m[36m(pid=140585)[0m     self._init(self.config, self.env_creator)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 109, in _init
+[2m[36m(pid=140585)[0m     self.config["num_workers"])
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 568, in _make_workers
+[2m[36m(pid=140585)[0m     logdir=self.logdir)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 64, in __init__
+[2m[36m(pid=140585)[0m     RolloutWorker, env_creator, policy, 0, self._local_config)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/worker_set.py", line 220, in _make_worker
+[2m[36m(pid=140585)[0m     _fake_sampler=config.get("_fake_sampler", False))
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 350, in __init__
+[2m[36m(pid=140585)[0m     self._build_policy_map(policy_dict, policy_config)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/evaluation/rollout_worker.py", line 766, in _build_policy_map
+[2m[36m(pid=140585)[0m     policy_map[name] = cls(obs_space, act_space, merged_conf)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/tf_policy_template.py", line 143, in __init__
+[2m[36m(pid=140585)[0m     obs_include_prev_action_reward=obs_include_prev_action_reward)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 200, in __init__
+[2m[36m(pid=140585)[0m     self._initialize_loss()
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 341, in _initialize_loss
+[2m[36m(pid=140585)[0m     loss = self._do_loss_init(train_batch)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/policy/dynamic_tf_policy.py", line 353, in _do_loss_init
+[2m[36m(pid=140585)[0m     loss = self._loss_fn(self, self.model, self.dist_class, train_batch)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 146, in ppo_surrogate_loss
+[2m[36m(pid=140585)[0m     model_config=policy.config["model"])
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/agents/ppo/ppo_policy.py", line 84, in __init__
+[2m[36m(pid=140585)[0m     logp_ratio = tf.exp(curr_action_dist.logp(actions) - prev_actions_logp)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 236, in logp
+[2m[36m(pid=140585)[0m     self.child_distributions, split_list)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 235, in <listcomp>
+[2m[36m(pid=140585)[0m     distribution.logp(split_x) for distribution, split_x in zip(
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/rllib/models/tf/tf_action_dist.py", line 105, in logp
+[2m[36m(pid=140585)[0m     actions = tf.unstack(tf.cast(actions, tf.int32), axis=1)
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/tensorflow_core/python/ops/array_ops.py", line 1322, in unstack
+[2m[36m(pid=140585)[0m     raise ValueError("Cannot infer num from shape %s" % value_shape)
+[2m[36m(pid=140585)[0m ValueError: Cannot infer num from shape (?, ?)
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 711, in ray._raylet.task_execution_handler
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 621, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 663, in ray._raylet.execute_task
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140585)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140585)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 481: ordinal not in range(128)
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m During handling of the above exception, another exception occurred:
+[2m[36m(pid=140585)[0m 
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140585)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140585)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)
+[2m[36m(pid=140585)[0m Exception ignored in: 'ray._raylet.task_execution_handler'
+[2m[36m(pid=140585)[0m Traceback (most recent call last):
+[2m[36m(pid=140585)[0m   File "/home/sitota/my_partition/anaconda3/envs/“flow2”/lib/python3.7/site-packages/ray/utils.py", line 67, in push_error_to_driver
+[2m[36m(pid=140585)[0m     worker.raylet_client.push_error(job_id, error_type, message, time.time())
+[2m[36m(pid=140585)[0m   File "python/ray/_raylet.pyx", line 439, in ray._raylet.RayletClient.push_error
+[2m[36m(pid=140585)[0m UnicodeEncodeError: 'ascii' codec can't encode character '\u201c' in position 155: ordinal not in range(128)

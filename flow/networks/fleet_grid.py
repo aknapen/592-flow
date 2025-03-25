@@ -14,11 +14,11 @@ ADDITIONAL_NET_PARAMS = {
         # number of vertical columns of edges
         "col_num": 3,
         # length of inner edges in the traffic light grid network
-        "inner_length": None,
+        "inner_length": 20,
         # length of edges where vehicles enter the network
-        "short_length": None,
+        "short_length": 30,
         # length of edges where vehicles exit the network
-        "long_length": None,
+        "long_length": 20,
         # number of cars starting at the edges heading to the top
         "cars_top": 1,
         # number of cars starting at the edges heading to the bottom

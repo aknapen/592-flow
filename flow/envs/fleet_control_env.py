@@ -93,7 +93,7 @@ class FleetControlEnv(Env):
                       shape=(self.initial_vehicles.num_rl_vehicles,), 
                       dtype=np.uint32)
                          
-        return Tuple(velocity_space, x_space, y_space)
+        return Tuple((velocity_space, x_space, y_space))
     
     def get_updated_route(self, ids, route_actions):
         print("in updated route")
@@ -157,6 +157,7 @@ class FleetControlEnv(Env):
                 action = allowed_actions[0]
             
             current_route = self.k.vehicle.get_route(veh_id)
+            print("current route", veh_id, current_route)
             match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", current_edge)
             row, col = int(match.group(2)), int(match.group(3))
             direction = match.group(1)
@@ -217,7 +218,7 @@ class FleetControlEnv(Env):
                         new_edge = "right{}_{}".format(row, col)
                         
                 current_route = [new_edge]
-            
+        print("new route", veh_id, current_route)
         return current_route
 
     def _apply_rl_actions(self, rl_actions):
