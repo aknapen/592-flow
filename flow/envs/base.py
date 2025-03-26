@@ -322,8 +322,6 @@ class Env(gym.Env, metaclass=ABCMeta):
         info : dict
             contains other diagnostic information from the previous action
         """
-        print("Step: ", self.step_counter)
-        print( "Step rl actions", rl_actions)
         for _ in range(self.env_params.sims_per_step):
             self.time_counter += 1
             self.step_counter += 1
@@ -360,11 +358,10 @@ class Env(gym.Env, metaclass=ABCMeta):
                     route_contr = self.k.vehicle.get_routing_controller(
                         veh_id)
                     routing_actions.append(route_contr.choose_route(self))
-            print("choosing routes")
+            
             self.k.vehicle.choose_routes(routing_ids, routing_actions)
-            print("routes chosen")
+
             self.apply_rl_actions(rl_actions)
-            print("actions applied")
 
             self.additional_command()
 

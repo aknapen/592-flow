@@ -28,16 +28,13 @@ class FleetControlEnv(Env):
     def __init__(self, env_params, sim_params, network, simulator='traci'):
         # Check that all necessary additional environmental parameters have 
         # been specified
-        print("in fleet control env")
         for p in ADDITIONAL_ENV_PARAMS.keys():
             if p not in env_params.additional_params:
                 raise KeyError(
                     'Environment parameter \'{}\' not supplied'.format(p)
                 )
-        print("out2 of  fleet control env")
         super().__init__(env_params, sim_params, network, simulator)
         
-        print("out of  fleet control env")
         # Initialize vehicle destinations (randomly set for now)
         self.destinations = {}
         # Initialize previous positions
@@ -46,54 +43,40 @@ class FleetControlEnv(Env):
         # Weights for different components of the reward function
         self.emission_weight = 1.0
         self.route_weight = 1.0
-
-    @property
-    def action_space(self):
-        # Agent can apply acceleration within [-max_decel, max_accel] to each vehicle
-        print("in action space")
-        accel_space = Box(
-            low=-abs(self.env_params.additional_params['max_decel']),
-            high=self.env_params.additional_params['max_accel'],
-            ######################################################################################
-            shape=(self.initial_vehicles.num_rl_vehicles,),
-            dtype=np.float32)
-        
-        # Agent can update the route of the vehicle by changing the direction of travel.
-        # [0 = up, 1 = right, 2 = down, 3 = left] (clockwise winding)
-        # The route space will be dynamic based on proximity to intersections
-        # We need to determine the route space for each vehicle
-        # Initially, we'll set up MultiDiscrete([4]) for each vehicle, but we'll handle
-        # the actual route options in the _apply_rl_actions method
-        ########################################################################################
-        route_space = MultiDiscrete([4]*self.initial_vehicles.num_rl_vehicles)
-
-        return Tuple((accel_space, route_space))
     
     @property
-    def observation_space(self):        
-        # The agent's observation space consists of a triplet of (velocity, x position, y position)
-        # for each vehicle in the fleet:
-        #   1. the vehicle's velocity (normalized to network's max velocity)
-        #   2. the vehicle's x position in the network
-        #   3. the vehicle's y position in the network
-        print("in observation space")
-        velocity_space = Box(
-            low=0,
-            high=1,
-            shape=(self.initial_vehicles.num_rl_vehicles, ),
-            dtype=np.float32)
-        
-        x_space = Box(low=self.env_params.additional_params['min_x'], 
-                      high=self.env_params.additional_params['max_x'], 
-                      shape=(self.initial_vehicles.num_rl_vehicles,), 
-                      dtype=np.uint32)
-        
-        y_space = Box(low=self.env_params.additional_params['min_y'], 
-                      high=self.env_params.additional_params['max_y'], 
-                      shape=(self.initial_vehicles.num_rl_vehicles,), 
-                      dtype=np.uint32)
-                         
-        return Tuple((velocity_space, x_space, y_space))
+    def action_space(self):
+        accel_dim = self.initial_vehicles.num_rl_vehicles
+        route_dim = self.initial_vehicles.num_rl_vehicles
+
+        # Each action is formatted a sa flattened list which is required for compatibility
+        # with Ray RLlib. The actions is a concatenated array with the following format:
+        #       [accelerations for each vehicle] + [routing decisions for each vehicle]
+        return Box(
+            low=np.array([-self.env_params.additional_params['max_decel']] * accel_dim +
+                        [0] * route_dim), # Array combining lowest acceleration values + min indexed routing action
+            high=np.array([self.env_params.additional_params['max_accel']] * accel_dim +
+                        [3] * route_dim),  # Array combining largest acceleration values + max indexed routing action, assuming 4 possible routes (0-3)
+            dtype=np.float32
+    )
+
+    @property
+    def observation_space(self):
+        num_vehicles = self.initial_vehicles.num_rl_vehicles
+
+        # Each observation is formatted as a flattened list which is required for compatibility
+        # with Ray RLlib. The observation is a concatenated array with the following format:
+        #       [normalized velocities for each vehicle] + [x positions for each vehicle] + [y positions for each vehicle]
+        return Box(
+            low=np.array([0] * num_vehicles +  # Velocity lower bounds
+                        [self.env_params.additional_params['min_x']] * num_vehicles +  # X position bounds
+                        [self.env_params.additional_params['min_y']] * num_vehicles),  # Y position bounds
+            high=np.array([1] * num_vehicles +  # Velocity upper bounds
+                        [self.env_params.additional_params['max_x']] * num_vehicles +  # X position bounds
+                        [self.env_params.additional_params['max_y']] * num_vehicles),  # Y position bounds
+            dtype=np.float32
+    )
+
     
     def get_updated_route(self, ids, route_actions):
         print("in updated route")
@@ -220,20 +203,24 @@ class FleetControlEnv(Env):
                 current_route = [new_edge]
         print("new route", veh_id, current_route)
         return current_route
-
+    
     def _apply_rl_actions(self, rl_actions):
-        print("in apply rl actions")
         ids = self.k.vehicle.get_rl_ids()
-        accel_actions = rl_actions[0]  # First element of tuple is acceleration actions
-        route_actions = rl_actions[1]  # Second element of tuple is route actions
+        num_vehicles = len(ids)
 
-        # Update any vehicle routes
+        # Split the flattened actions back into acceleration and routing components
+        # The first half of the array of actions holds the acceleration values, while 
+        # the second half holds the routing values
+        accel_actions = rl_actions[:num_vehicles]
+        route_actions = rl_actions[num_vehicles:]
+
+        # Update vehicle accelerations
+        self.k.vehicle.apply_acceleration(ids, accel_actions)
+
+        # Update vehicle routes based on route actions
         routes = self.get_updated_route(ids, route_actions)
         self.k.vehicle.choose_routes(ids, routes)
 
-        # Update any vehicle accelerations
-        self.k.vehicle.apply_acceleration(ids, accel_actions)
-    
     def compute_distance_traveled(self, curr_positions, prev_positions):
         # Calculate element-wise Euclidean distances of each vehicle)
         if len(prev_positions) > 0 and len(curr_positions) >0:
@@ -295,8 +282,16 @@ class FleetControlEnv(Env):
 
     def get_state(self):
         print("in get state")
+
         ids = self.k.vehicle.get_rl_ids()
+        
+        # Collect all the speeds and (x,y) positions of the vehicles
         speeds = [self.k.vehicle.get_speed(id) / self.k.network.max_speed() for id in ids]
         pos = [self.k.vehicle.get_2d_position(id) for id in ids]
 
-        return np.array(speeds + pos)
+        # Split positions into x values and y values to match format of states
+        # for the RL agents
+        x_vals = [p[0] for p in pos]
+        y_vals = [p[1] for p in pos]
+
+        return np.array(speeds + x_vals + y_vals)
