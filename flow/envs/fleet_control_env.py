@@ -1,6 +1,7 @@
 import re
 import numpy as np
 from flow.envs.base import Env
+from random import randint
 
 from gym.spaces import Tuple, Dict, MultiDiscrete, Discrete
 from gym.spaces.box import Box
@@ -36,7 +37,48 @@ class FleetControlEnv(Env):
         super().__init__(env_params, sim_params, network, simulator)
         
         # Initialize vehicle destinations (randomly set for now)
-        self.destinations = {}
+        self.destinations = []
+        edges = network.specify_edges(None)
+        for i in range(env_params.additional_params["num_vehicles"]):
+            same_dest = True
+
+            # Keep generating a random position until you make a new one
+            while same_dest:
+                # Obtain a random edge in the network + a random position on that edge
+                rand_edge = edges[randint(0, len(edges)-1)]
+                rand_pos = randint(0, rand_edge["length"])
+
+                from_node = next(node for node in network.specify_nodes(None) if node['id'] == rand_edge['from'])
+                to_node = next(node for node in network.specify_nodes(None) if node['id'] == rand_edge['to'])
+
+                x_start, y_start = from_node['x'], from_node['y']
+                x_end, y_end = to_node['x'], to_node['y']
+
+                # Calculate direction vector
+                dx = abs(x_end - x_start)
+                dy = abs(y_end - y_start)
+
+                # Normalize direction vector
+                length = ((dx ** 2) + (dy ** 2)) ** 0.5
+                dx /= length
+                dy /= length
+
+                # Compute (x, y) at the given position
+                rand_x = x_start + dx * rand_pos
+                rand_y = y_start + dy * rand_pos
+                
+                print("Rand edge", rand_edge)
+                print("Rand pos", rand_pos)
+                print("x_start", x_start)
+                print("y_start", y_start)
+                print("dx", dx)
+                print("dy", dy)
+                print(f"Vehicle {i} candidate dest {rand_x, rand_y}")
+                if not ((rand_x, rand_y) in self.destinations):
+                    print(f"Vehicle {i} received dest {rand_x, rand_y}")
+                    self.destinations.append((rand_x, rand_y))
+                    same_dest = False
+
         # Initialize previous positions
         self.prev_positions = {}
         
@@ -44,7 +86,7 @@ class FleetControlEnv(Env):
         self.emission_weight = 1.0
         self.route_weight = 1.0
         self.all_vechicles = self.k.vehicle.get_ids()
-        print("all vechicles", self.all_vechicles)
+        # print("all vechicles", self.all_vechicles)
     
     @property
     def action_space(self):
@@ -266,7 +308,6 @@ class FleetControlEnv(Env):
         return np.sum(distances)
     
     def compute_reward(self, rl_actions, **kwargs):
-        print("in compute reward")
         ids = self.k.vehicle.get_rl_ids()
         print(ids, len(ids))
         # Get current (x,y) positions for each vehicle
@@ -276,17 +317,7 @@ class FleetControlEnv(Env):
         if self.prev_positions is None:
             self.prev_positions = positions
             return 0  # Return 0 reward on first step
-            
-        # Initialize destinations if they don't exist
-        if not self.destinations:
-            # Randomly assign destinations for demonstration purposes
-            # In practice, you would likely set these based on your scenario
-            x_max = self.env_params.additional_params['max_x']
-            y_max = self.env_params.additional_params['max_y']
-            for i, id in enumerate(ids):
-                self.destinations[id] = [np.random.uniform(0, x_max), 
-                                        np.random.uniform(0, y_max)]
-
+        
         # Emission reward is MPG metric (does this need to be scaled by time?)
         distance_traveled = self.compute_distance_traveled(positions, self.prev_positions)
         
@@ -300,32 +331,24 @@ class FleetControlEnv(Env):
         # This will be a list of booleans where the ith element is true if positions[i] = destinations[i]
         destinations_reached = []
         for i in range(len(ids)):
-            # print(i, positions[i], self.destinations[ids[i]], len(self.destinations))
-            if np.linalg.norm(positions[i] - self.destinations[ids[i]]) < 5.0:
+            dist = np.linalg.norm(np.array(positions[i]) - np.array(self.destinations[i]))
+            if dist < 5.0:
                 destinations_reached.append(True)
             else:
                 destinations_reached.append(False)
 
-        # destinations_reached = [(np.linalg.norm(positions[i] - self.destinations[ids[i]]) < 5.0) 
-                            #   for i in range(len(ids))]
         
         # Agent accumulates -1 rewards for each vehicle that is not at its destination
         route_reward = np.sum(np.array([1 if reached else -1 for reached in destinations_reached]))
 
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
-    def get_state(self):
-        
-        
-        
-        print("in get state")
-
+    def get_state(self):        
         ids = self.k.vehicle.get_rl_ids()
         
         if len(ids) > len(self.all_vechicles):
             self.all_vechicles = ids
             
-        print(ids, "cars", self.all_vechicles)
         # Collect all the speeds and (x,y) positions of the vehicles
         speeds = []
         pos = []
@@ -344,7 +367,7 @@ class FleetControlEnv(Env):
         x_vals = [p[0] for p in pos]
         y_vals = [p[1] for p in pos]
         out = np.array(speeds + x_vals + y_vals)
-        print("california", out, out.shape,)
+        # print("california", out, out.shape,)
         # print("speeds", speeds,pos)
         
         # save the first state in global variable 
