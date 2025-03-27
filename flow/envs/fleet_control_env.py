@@ -82,12 +82,17 @@ class FleetControlEnv(Env):
         print("in updated route")
         routes = []
         
-        
         for i, veh_id in enumerate(ids):
             # Get current edge and position of the vehicle
             # this function maybe wrong/ get_route
             current_edge = self.k.vehicle.get_edge(veh_id)
+            current_route = self.k.vehicle.get_route(veh_id)
             
+            # # New check: if vehicle is on a junction-internal edge, skip updating its route.
+            # if "junction-internal" in current_edge:
+            #     routes.append(current_route)
+            #     continue
+
             veh_pos = self.k.vehicle.get_2d_position(veh_id)
             
             near_intersection = False
@@ -96,8 +101,11 @@ class FleetControlEnv(Env):
             # Map of actions to direction names for route calculations
             direction_map = {0: "top", 1: "bot", 2: "right",  3: "left"}
             
-            if hasattr(self.k.network, "_inner_nodes"):
-                intersections = self.k.network._inner_nodes
+            
+            # print("attributes",  ns)
+            # if hasattr(self.k.network, "_inner_nodes"):
+            if (True):
+                intersections = self.network.get_inner_nodes()
                 
                 # nodes.append({
                 #     "id": "center{}".format(row * self.col_num + col),
@@ -108,12 +116,13 @@ class FleetControlEnv(Env):
                 # })
 
                 # calculate distance from vehicle to each intersection
+                # print("intersections", intersections)
                 for node in intersections:
                     distance = np.sqrt(
                         (veh_pos[0] - node["x"])**2 + 
                         (veh_pos[1] - node["y"])**2
                     )
-                    
+                    # print("veh", veh_pos, "node", node["x"], node["y"], "distance", distance, node["radius"])
                     # near intersection radius means the vehicle is near the intersection
                     if distance < node["radius"]:
                         near_intersection = True
@@ -122,6 +131,7 @@ class FleetControlEnv(Env):
                     
                     
             if not near_intersection:
+                # return current_route
                 # check if the edge starts with bot{}_{} or top{}_{}
                 if current_edge.startswith("bot"):
                     allowed_actions = [1] 
@@ -133,13 +143,13 @@ class FleetControlEnv(Env):
                 else:
                     allowed_actions =  [3]  
 
-            action = route_actions[i]
+            action = abs(int(route_actions[i]))
 
             if action not in allowed_actions:
                 # If invalid action, maintain current route (keep going in same direction)
                 action = allowed_actions[0]
             
-            current_route = self.k.vehicle.get_route(veh_id)
+            
             print("current route", veh_id, current_route)
             match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", current_edge)
             row, col = int(match.group(2)), int(match.group(3))
@@ -150,7 +160,7 @@ class FleetControlEnv(Env):
                 # current_edge looks like bot{row}_{col}, or right{row}_{col}
                 #the numbers have to be the index of the current edge , current_edge looks like bot0_1
                 #############################################################################################
-                
+                print("near intersection", current_edge, veh_id)
                 if current_edge.startswith("bot"):
                     if direction_map[action] == 'top':
                         new_edge = "top{}_{}".format(row, col)
@@ -186,8 +196,30 @@ class FleetControlEnv(Env):
                     elif direction_map[action] == 'right':
                         new_edge = "right{}_{}".format(row, col)
                     elif direction_map[action] == 'left':
-                        new_edge = "left{}_{}".format(row - 1, col)   
+                        new_edge = "left{}_{}".format(row - 1, col)  
+                
+                new_route = []
+                new_route.append(current_edge)
+                if current_edge != new_edge:
+                    new_route.append(new_edge)
+                    
+                routes.append(new_route)
+                
+                # start = False
+                # for i, edge in enumerate(current_route):
+                #     if edge == current_edge:
+                #         start = True
+                #     if start:
+                #         new_route.append(edge)
+                #         # current_route[i] = new_edge
+                
+                # current_route = np.append(current_route, new_edge)
+                # routes = np.append(routes, current_route)
+                
             else:
+                # current_route = [current_route[0]] + [current_route[0]]
+                routes.append(current_route)
+                continue
                 if direction_map[action].startswith(direction):
                     new_edge = current_edge
                 else:
@@ -200,9 +232,8 @@ class FleetControlEnv(Env):
                     elif direction == "left" and direction_map[action] == "right":
                         new_edge = "right{}_{}".format(row, col)
                         
-                current_route = [new_edge]
-        print("new route", veh_id, current_route)
-        return current_route
+        print("new vechile routes make it bigger", routes, ids)
+        return np.array(routes)
     
     def _apply_rl_actions(self, rl_actions):
         ids = self.k.vehicle.get_rl_ids()
@@ -281,6 +312,7 @@ class FleetControlEnv(Env):
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
     def get_state(self):
+        
         print("in get state")
 
         ids = self.k.vehicle.get_rl_ids()
@@ -293,5 +325,9 @@ class FleetControlEnv(Env):
         # for the RL agents
         x_vals = [p[0] for p in pos]
         y_vals = [p[1] for p in pos]
-
+        out = np.array(speeds + x_vals + y_vals)
+        # print("california", out, out.shape,)
+        # print("speeds", speeds,pos)
         return np.array(speeds + x_vals + y_vals)
+
+# python3 train.py flowagent --rl_trainer 'rllib' --num_cpus 4 --num_steps 5 --rollout_size 1

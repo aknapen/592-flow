@@ -88,7 +88,8 @@ class GridRouter(BaseRouter):
     -----
     See base class for usage example.
     """
-
+    # [1,2,3,4]
+    # [4]
     def choose_route(self, env):
         """See parent class."""
         if len(env.k.vehicle.get_route(self.veh_id)) == 0:
@@ -157,9 +158,10 @@ class FleetRouter(BaseRouter):
     -----
     See base class for usage example.
     """
-
+    # [1]
+    # [1]
     def choose_route(self, env):
         """See parent class."""
         if len(env.k.vehicle.get_route(self.veh_id)) == 0:
             return None
-        return [env.k.vehicle.get_route(self.veh_id)[0]]
+        return [env.k.vehicle.get_route(self.veh_id)[-1]]
