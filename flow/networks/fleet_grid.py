@@ -181,8 +181,8 @@ class FleetGridNetwork(Network):
         for i in range(self.row_num):
             bot_id = "bot{}_0".format(i)
             top_id = "top{}_{}".format(i, self.col_num)
-            for j in range(self.col_num + 1):
-            # for j in range(1):
+            # for j in range(self.col_num + 1):
+            for j in range(1):
                 routes[bot_id] += ["bot{}_{}".format(i, j)]
                 routes[top_id] += ["top{}_{}".format(i, self.col_num - j)]
 
@@ -190,8 +190,8 @@ class FleetGridNetwork(Network):
         for j in range(self.col_num):
             left_id = "left{}_{}".format(self.row_num, j)
             right_id = "right0_{}".format(j)
-            for i in range(self.row_num + 1):
-            # for i in range(1):
+            # for i in range(self.row_num + 1):
+            for i in range(1):
                 routes[left_id] += ["left{}_{}".format(self.row_num - i, j)]
                 routes[right_id] += ["right{}_{}".format(i, j)]
 
@@ -516,7 +516,6 @@ class FleetGridNetwork(Network):
                 "signal_group": signal_group
             }]
 
-        print("yes we can", self.row_num, self.col_num)
         
         # build connections at each inner node
         for i in range(self.row_num):
@@ -573,10 +572,8 @@ class FleetGridNetwork(Network):
                 con_dict[node_id] += conn
                 
                 
-                
-                
 
-        print("connections we made along the way",con_dict, len(con_dict['center0']) )
+        # print("connections we made along the way",con_dict, len(con_dict['center0']) )
         return con_dict
     
     # TODO necessary?

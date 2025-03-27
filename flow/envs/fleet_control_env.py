@@ -204,7 +204,7 @@ class FleetControlEnv(Env):
                     new_route.append(new_edge)
                     
                 routes.append(new_route)
-                
+                routes = [new_edge]
                 # start = False
                 # for i, edge in enumerate(current_route):
                 #     if edge == current_edge:
