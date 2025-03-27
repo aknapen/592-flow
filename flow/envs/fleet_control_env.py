@@ -24,7 +24,7 @@ ADDITIONAL_ENV_PARAMS = {
 }
 
 class FleetControlEnv(Env):
-
+    
     def __init__(self, env_params, sim_params, network, simulator='traci'):
         # Check that all necessary additional environmental parameters have 
         # been specified
@@ -43,6 +43,8 @@ class FleetControlEnv(Env):
         # Weights for different components of the reward function
         self.emission_weight = 1.0
         self.route_weight = 1.0
+        self.all_vechicles = self.k.vehicle.get_ids()
+        print("all vechicles", self.all_vechicles)
     
     @property
     def action_space(self):
@@ -124,7 +126,7 @@ class FleetControlEnv(Env):
                     )
                     # print("veh", veh_pos, "node", node["x"], node["y"], "distance", distance, node["radius"])
                     # near intersection radius means the vehicle is near the intersection
-                    if distance < node["radius"]:
+                    if distance < 30:
                         near_intersection = True
                         allowed_actions = [0, 1, 2, 3]  
                         break
@@ -202,9 +204,9 @@ class FleetControlEnv(Env):
                 new_route.append(current_edge)
                 if current_edge != new_edge:
                     new_route.append(new_edge)
-                    
-                routes.append(new_route)
-                routes = [new_edge]
+                print("new route", new_route, current_edge, new_edge)
+                routes.append(tuple(new_route))
+                # routes = [new_edge]
                 # start = False
                 # for i, edge in enumerate(current_route):
                 #     if edge == current_edge:
@@ -231,9 +233,10 @@ class FleetControlEnv(Env):
                         new_edge = "left{}_{}".format(row, col)
                     elif direction == "left" and direction_map[action] == "right":
                         new_edge = "right{}_{}".format(row, col)
-                        
-        print("new vechile routes make it bigger", routes, ids)
-        return np.array(routes)
+        
+        
+        # print("new vechile routes make it bigger", np.array(routes), ids)
+        return routes
     
     def _apply_rl_actions(self, rl_actions):
         ids = self.k.vehicle.get_rl_ids()
@@ -313,21 +316,39 @@ class FleetControlEnv(Env):
 
     def get_state(self):
         
+        
+        
         print("in get state")
 
         ids = self.k.vehicle.get_rl_ids()
         
+        if len(ids) > len(self.all_vechicles):
+            self.all_vechicles = ids
+            
+        print(ids, "cars", self.all_vechicles)
         # Collect all the speeds and (x,y) positions of the vehicles
-        speeds = [self.k.vehicle.get_speed(id) / self.k.network.max_speed() for id in ids]
-        pos = [self.k.vehicle.get_2d_position(id) for id in ids]
+        speeds = []
+        pos = []
+        for id in self.all_vechicles:
+            if id in ids:
+                speeds.append(self.k.vehicle.get_speed(id) / self.k.network.max_speed())
+                pos.append(self.k.vehicle.get_2d_position(id))
+            else:
+                speeds.append(0)
+                pos.append([-1, -1])
+        # speeds = [self.k.vehicle.get_speed(id) / self.k.network.max_speed() for id in ids]
+        # pos = [self.k.vehicle.get_2d_position(id) for id in ids]
 
         # Split positions into x values and y values to match format of states
         # for the RL agents
         x_vals = [p[0] for p in pos]
         y_vals = [p[1] for p in pos]
         out = np.array(speeds + x_vals + y_vals)
-        # print("california", out, out.shape,)
+        print("california", out, out.shape,)
         # print("speeds", speeds,pos)
+        
+        # save the first state in global variable 
+        # self.state = out
         return np.array(speeds + x_vals + y_vals)
 
 # python3 train.py flowagent --rl_trainer 'rllib' --num_cpus 4 --num_steps 5 --rollout_size 1

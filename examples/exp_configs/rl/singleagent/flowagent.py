@@ -177,7 +177,7 @@ vehicles.add(
     #     speed_mode="all_checks",
     # ),
     # TODO: add routing controller
-    routing_controller=(FleetRouter, {}),
+    routing_controller=(GridRouter, {}),
     num_vehicles=4)
 
 # collect the initialization and network-specific parameters based on the
