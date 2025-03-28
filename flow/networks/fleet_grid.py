@@ -150,7 +150,7 @@ class FleetGridNetwork(Network):
         # specifies whether or not there will be traffic lights at the
         # intersections (True by default)
         self.use_traffic_lights = net_params.additional_params.get(
-            "traffic_lights", True)
+            "traffic_lights", False)
 
         # radius of the inner nodes (ie of the intersections)
         self.inner_nodes_radius = 2.9 + 3.3 * max(self.vertical_lanes,
@@ -535,41 +535,41 @@ class FleetGridNetwork(Network):
                 node_id = "center{}".format(i * self.col_num + j)
                 con_dict[node_id] = conn
                 
-            nodes = self.get_inner_nodes()
-            for node in nodes: 
-                match = re.search(r'\d+', node['id'])  # Find one or more digits in the string
-                node_num =  int(match.group()) if match else None  # Convert to int if found
-                j = node_num% self.col_num
-                i = node_num// self.col_num  
-                
-                
-                node_id = "{}_{}".format(i, j)
-                right_node_id = "{}_{}".format(i, j + 1)
-                top_node_id = "{}_{}".format(i + 1, j)
-                
-                conn = []
-                conn += new_2_con("bot","left", node_id, node_id, lane, 1)
-                conn += new_2_con("bot","right", node_id, top_node_id, lane, 1)
-                conn += new_2_con("bot","top", node_id, node_id, lane, 1)
+        nodes = self.get_inner_nodes()
+        for node in nodes: 
+            match = re.search(r'\d+', node['id'])  # Find one or more digits in the string
+            node_num =  int(match.group()) if match else None  # Convert to int if found
+            j = node_num% self.col_num
+            i = node_num// self.col_num  
+            
+            
+            node_id = "{}_{}".format(i, j)
+            right_node_id = "{}_{}".format(i, j + 1)
+            top_node_id = "{}_{}".format(i + 1, j)
+            
+            conn = []
+            conn += new_2_con("bot","left", node_id, node_id, lane, 1)
+            conn += new_2_con("bot","right", node_id, top_node_id, lane, 1)
+            conn += new_2_con("bot","top", node_id, node_id, lane, 1)
 
-                j+= 1
-                conn += new_2_con("top","left", "{}_{}".format(i, j), "{}_{}".format(i, j - 1), lane, 1)
-                conn += new_2_con("top","right", "{}_{}".format(i, j), "{}_{}".format(i + 1, j - 1), lane, 1)
-                conn += new_2_con("top","bot", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 1)
-                j -=1
-        
-                conn += new_2_con("right","bot", node_id, "{}_{}".format(i, j + 1), lane, 2)
-                conn += new_2_con("right","top", node_id, node_id, lane, 2)
-                conn += new_2_con("right","left", node_id, node_id, lane, 2)
-
-                i+= 1
-                conn += new_2_con("left","bot", "{}_{}".format(i, j), "{}_{}".format(i - 1, j + 1), lane, 2)
-                conn += new_2_con("left","top", "{}_{}".format(i, j),"{}_{}".format(i - 1, j) , lane, 2)
-                conn += new_2_con("left","right", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 2)
-                i -= 1
+            j+= 1
+            conn += new_2_con("top","left", "{}_{}".format(i, j), "{}_{}".format(i, j - 1), lane, 1)
+            conn += new_2_con("top","right", "{}_{}".format(i, j), "{}_{}".format(i + 1, j - 1), lane, 1)
+            conn += new_2_con("top","bot", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 1)
+            j -=1
     
-                node_id = "center{}".format(i * self.col_num + j)
-                con_dict[node_id] += conn
+            conn += new_2_con("right","bot", node_id, "{}_{}".format(i, j + 1), lane, 2)
+            conn += new_2_con("right","top", node_id, node_id, lane, 2)
+            conn += new_2_con("right","left", node_id, node_id, lane, 2)
+
+            i+= 1
+            conn += new_2_con("left","bot", "{}_{}".format(i, j), "{}_{}".format(i - 1, j + 1), lane, 2)
+            conn += new_2_con("left","top", "{}_{}".format(i, j),"{}_{}".format(i - 1, j) , lane, 2)
+            conn += new_2_con("left","right", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 2)
+            i -= 1
+
+            node_id = "center{}".format(i * self.col_num + j)
+            con_dict[node_id] += conn
                 
                 
 

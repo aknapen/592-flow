@@ -608,7 +608,6 @@ class Env(gym.Env, metaclass=ABCMeta):
         rl_actions : array_like
             list of actions provided by the RL algorithm
         """
-        print("RL actions",rl_actions)
         # ignore if no actions are issued
         if rl_actions is None:
             return
