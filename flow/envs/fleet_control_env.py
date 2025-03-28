@@ -196,6 +196,11 @@ class FleetControlEnv(Env):
             
             print("current route", veh_id, current_route)
             match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", current_edge)
+            # if match fails pass this loop
+            if match is None:
+                print(match, "match is none", current_edge, "veh id", veh_id)
+                routes.append(current_route)
+                continue
             row, col = int(match.group(2)), int(match.group(3))
             direction = match.group(1)
             
@@ -299,9 +304,16 @@ class FleetControlEnv(Env):
 
     def compute_distance_traveled(self, curr_positions, prev_positions):
         # Calculate element-wise Euclidean distances of each vehicle)
+        print("curr positions", curr_positions, "prev positions", prev_positions)
+        distances = []
         if len(prev_positions) > 0 and len(curr_positions) >0:
-            distances = np.sqrt(np.power(curr_positions[0] - prev_positions[0], 2) + 
-                            np.power(curr_positions[1] - prev_positions[1], 2))
+            for i in range(len(curr_positions)):
+                # Calculate distance for each vehicle
+                dist = np.sqrt(np.power(curr_positions[i][0] - prev_positions[i][0], 2) + 
+                               np.power(curr_positions[i][1] - prev_positions[i][1], 2))
+                distances.append(dist)
+            # distances = np.sqrt(np.power(curr_positions[0] - prev_positions[0], 2) + 
+            #                 np.power(curr_positions[1] - prev_positions[1], 2))
         else:
             distances = np.zeros(len(curr_positions))
         # Return cumulative distance for the fleet
@@ -344,15 +356,17 @@ class FleetControlEnv(Env):
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
     def get_state(self):        
+         
+        num_vech  = ADDITIONAL_ENV_PARAMS["num_vehicles"]
+        print("in get state")
+
         ids = self.k.vehicle.get_rl_ids()
-        
-        if len(ids) > len(self.all_vechicles):
-            self.all_vechicles = ids
             
         # Collect all the speeds and (x,y) positions of the vehicles
         speeds = []
         pos = []
-        for id in self.all_vechicles:
+        for i in range(num_vech):
+            id = 'rl_{}'.format(i)
             if id in ids:
                 speeds.append(self.k.vehicle.get_speed(id) / self.k.network.max_speed())
                 pos.append(self.k.vehicle.get_2d_position(id))
@@ -364,9 +378,10 @@ class FleetControlEnv(Env):
 
         # Split positions into x values and y values to match format of states
         # for the RL agents
+        # print("positions", pos)
         x_vals = [p[0] for p in pos]
         y_vals = [p[1] for p in pos]
-        out = np.array(speeds + x_vals + y_vals)
+        # out = np.array(speeds + x_vals + y_vals)
         # print("california", out, out.shape,)
         # print("speeds", speeds,pos)
         
