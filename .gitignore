@@ -111,3 +111,5 @@ flow.ang
 *.ang.old
 *.sang
 
+# Debug output
+*.txt
