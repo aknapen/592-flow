@@ -123,10 +123,10 @@ def get_non_flow_params(enter_speed, add_net_params):
 
 V_ENTER = 15
 INNER_LENGTH = 30
-LONG_LENGTH = 10
+LONG_LENGTH = 30
 SHORT_LENGTH = 30
-N_ROWS = 1
-N_COLUMNS = 1
+N_ROWS = 2
+N_COLUMNS = 2
 NUM_CARS_LEFT = 1
 NUM_CARS_RIGHT = 1
 NUM_CARS_TOP = 1

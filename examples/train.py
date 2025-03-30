@@ -136,7 +136,6 @@ def setup_exps_rllib(flow_params,
         from ray.rllib.agents.agent import get_agent_class
     except ImportError:
         from ray.rllib.agents.registry import get_agent_class
-
     horizon = flow_params['env'].horizon
 
     alg_run = "PPO"

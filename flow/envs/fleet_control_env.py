@@ -138,40 +138,17 @@ class FleetControlEnv(Env):
             # this function maybe wrong/ get_route
             current_edge = self.k.vehicle.get_edge(veh_id)
             current_route = self.k.vehicle.get_route(veh_id)
-            print("Veh id", veh_id, "Current edge:", current_edge)
+            # print("Veh id", veh_id, "Current edge:", current_edge)
 
             veh_pos = self.k.vehicle.get_2d_position(veh_id)
             
             near_intersection = False
             allowed_actions = []
             
-            
-            
-            
-
-            intersections = self.network.get_inner_nodes()
-            # calculate distance from vehicle to each intersection
-            for node in intersections:
-                distance = np.sqrt(
-                    (veh_pos[0] - node["x"])**2 + 
-                    (veh_pos[1] - node["y"])**2
-                )
-                
-                # near intersection radius means the vehicle is near the intersection
-                if distance < node["radius"]:
-                    near_intersection = True
-                    allowed_actions = [0, 1, 2, 3]  
-                    break
-                    
-
-            # Action decided by the RL agent
-            action = abs(int(route_actions[i]))            
-            
-            
             # Weird case that is not understood, don't update the route
             match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", current_edge)
             if match is None:
-                print(match, "match is none", current_edge, "veh id", veh_id)
+                print(match, "match is none", current_edge, "veh id", veh_id, "current route", current_route)
                 routes.append(current_route)
                 continue
 
@@ -181,12 +158,56 @@ class FleetControlEnv(Env):
             row, col = int(match.group(2)), int(match.group(3))
             direction = match.group(1)
             
+            
+
+            intersections = self.network.get_inner_nodes()
+            # calculate distance from vehicle to each intersection
+            min_distance = 10000
+            intersection = 5
+            for node in intersections:
+                
+                distance = np.sqrt(
+                    (veh_pos[0] - node["x"])**2 + 
+                    (veh_pos[1] - node["y"])**2
+                )
+                if distance < min_distance:
+                    min_distance = distance
+                    intersection = node
+
+                    # print("max distance", max_distance)
+                # near intersection radius means the vehicle is near the intersection
+                # print(node['radius'], "node radius")
+                # TODO: find optimal distance
+
+            if min_distance < 10:
+                col_num = 2
+                match = re.search(r'\d+', intersection['id'])  # Find one or more digits in the string
+                node_num =  int(match.group()) if match else None  # Convert to int if found
+                j = node_num % col_num
+                i = node_num // col_num  
+                print("node id", intersection['id'], "i", i, "j", j)
+                if current_edge == "top{}_{}".format(i, j) or current_edge == "bot{}_{}".format(i, j+1) or \
+                    current_edge == "left{}_{}".format(i, j) or current_edge == "right{}_{}".format(i+1, j):
+                    near_intersection = False
+                else:
+
+                    print(" turn", veh_id, "current edge", current_edge, intersection['id'], "distance", min_distance)
+                    near_intersection = True
+                    allowed_actions = [0, 1, 2, 3]  
+                    
+
+            # Action decided by the RL agent
+            action = int(abs((route_actions[i]))) % 4            
+            
+            
+            
+            
             # Calculate new route based on action if near intersection
             if near_intersection:
                 # current_edge looks like bot{row}_{col}, or right{row}_{col}
                 #the numbers have to be the index of the current edge , current_edge looks like bot0_1
                 #############################################################################################
-                print("Veh id", veh_id, "near intersection")
+                print("Veh id", veh_id, "near intersection","current edge", current_edge, "current route:",current_route,  )
                 if current_edge.startswith("bot"):
                     if direction_map[action] == 'top':
                         new_edge = "top{}_{}".format(row, col)
@@ -223,11 +244,30 @@ class FleetControlEnv(Env):
                         new_edge = "right{}_{}".format(row, col)
                     elif direction_map[action] == 'left':
                         new_edge = "left{}_{}".format(row - 1, col)  
+                else:
+                    print("Unknown edge type", current_edge)
                 
+                
+                match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", new_edge)
+                if match is None:
+                    new_edge = current_edge
+                    print("panic match is none", new_edge, "veh id", veh_id, "current edge", current_edge, "direction", direction_map[action])
+                else:  
+                    row, col = int(match.group(2)), int(match.group(3))
+                    if (row < 0 or row > 2 or \
+                        col < 0 or col > 2):
+                        print("out of bounds", row, col)
+                        new_edge = current_edge
+
+
+
                 if current_edge != new_edge:
                     routes.append((current_edge, new_edge))
+                else:
+                    routes.append((current_edge))
                 
             else:
+                print("not near intersection", veh_id, "current edge", current_edge)
                 routes.append((current_edge))
         
         return routes
@@ -236,21 +276,21 @@ class FleetControlEnv(Env):
         ids = self.k.vehicle.get_rl_ids()
         num_vehicles = len(ids)
 
-        print("Applying actions", rl_actions)
+       
 
         # Split the flattened actions back into acceleration and routing components
         # The first half of the array of actions holds the acceleration values, while 
         # the second half holds the routing values
         accel_actions = rl_actions[:num_vehicles]
         route_actions = rl_actions[num_vehicles:]
-
+        print("Applying route actions", route_actions)
         # Update vehicle accelerations
         self.k.vehicle.apply_acceleration(ids, accel_actions)
 
         # Update vehicle routes based on route actions
-        print(f"Current routes: {self.k.vehicle.get_route(ids)}")
+        # print(f"Current routes: {self.k.vehicle.get_route(ids)}")
         routes = self.get_updated_route(ids, route_actions)
-        print(f"Updated routes: {routes}")
+        # print(f"Updated routes: {routes}")
         self.k.vehicle.choose_routes(ids, routes)
 
     def compute_distance_traveled(self, curr_positions, prev_positions):
