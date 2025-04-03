@@ -181,8 +181,8 @@ class FleetGridNetwork(Network):
         for i in range(self.row_num):
             bot_id = "bot{}_0".format(i)
             top_id = "top{}_{}".format(i, self.col_num)
-            # for j in range(self.col_num + 1):
-            for j in range(1):
+            for j in range(self.col_num + 1):
+            # for j in range(1):
                 routes[bot_id] += ["bot{}_{}".format(i, j)]
                 routes[top_id] += ["top{}_{}".format(i, self.col_num - j)]
 
@@ -190,8 +190,8 @@ class FleetGridNetwork(Network):
         for j in range(self.col_num):
             left_id = "left{}_{}".format(self.row_num, j)
             right_id = "right0_{}".format(j)
-            # for i in range(self.row_num + 1):
-            for i in range(1):
+            for i in range(self.row_num + 1):
+            # for i in range(1):
                 routes[left_id] += ["left{}_{}".format(self.row_num - i, j)]
                 routes[right_id] += ["right{}_{}".format(i, j)]
 
@@ -507,74 +507,112 @@ class FleetGridNetwork(Network):
                 "toLane": str(lane),
                 "signal_group": signal_group
             }]
-        def new_2_con(side, side2, from_id, to_id, lane, signal_group):
-            return [{
-                "from": side + from_id,
-                "to": side2 + to_id,
-                "fromLane": str(lane),
-                "toLane": str(lane),
-                "signal_group": signal_group
-            }]
 
-        
         # build connections at each inner node
         for i in range(self.row_num):
             for j in range(self.col_num):
                 node_id = "{}_{}".format(i, j)
                 right_node_id = "{}_{}".format(i, j + 1)
                 top_node_id = "{}_{}".format(i + 1, j)
+
                 conn = []
                 for lane in range(self.vertical_lanes):
                     conn += new_con("bot", node_id, right_node_id, lane, 1)
                     conn += new_con("top", right_node_id, node_id, lane, 1)
-                  
                 for lane in range(self.horizontal_lanes):
-                   conn += new_con("right", node_id, top_node_id, lane, 2)
-                   conn += new_con("left", top_node_id, node_id, lane, 2)
+                    conn += new_con("right", node_id, top_node_id, lane, 2)
+                    conn += new_con("left", top_node_id, node_id, lane, 2)
 
                 node_id = "center{}".format(i * self.col_num + j)
                 con_dict[node_id] = conn
-                
-        nodes = self.get_inner_nodes()
-        for node in nodes: 
-            match = re.search(r'\d+', node['id'])  # Find one or more digits in the string
-            node_num =  int(match.group()) if match else None  # Convert to int if found
-            j = node_num% self.col_num
-            i = node_num// self.col_num  
-            
-            
-            node_id = "{}_{}".format(i, j)
-            right_node_id = "{}_{}".format(i, j + 1)
-            top_node_id = "{}_{}".format(i + 1, j)
-            
-            conn = []
-            conn += new_2_con("bot","left", node_id, node_id, lane, 1)
-            conn += new_2_con("bot","right", node_id, top_node_id, lane, 1)
-            conn += new_2_con("bot","top", node_id, node_id, lane, 1)
 
-            j+= 1
-            conn += new_2_con("top","left", "{}_{}".format(i, j), "{}_{}".format(i, j - 1), lane, 1)
-            conn += new_2_con("top","right", "{}_{}".format(i, j), "{}_{}".format(i + 1, j - 1), lane, 1)
-            conn += new_2_con("top","bot", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 1)
-            j -=1
-    
-            conn += new_2_con("right","bot", node_id, "{}_{}".format(i, j + 1), lane, 2)
-            conn += new_2_con("right","top", node_id, node_id, lane, 2)
-            conn += new_2_con("right","left", node_id, node_id, lane, 2)
-
-            i+= 1
-            conn += new_2_con("left","bot", "{}_{}".format(i, j), "{}_{}".format(i - 1, j + 1), lane, 2)
-            conn += new_2_con("left","top", "{}_{}".format(i, j),"{}_{}".format(i - 1, j) , lane, 2)
-            conn += new_2_con("left","right", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 2)
-            i -= 1
-
-            node_id = "center{}".format(i * self.col_num + j)
-            con_dict[node_id] += conn
-                
-                
-
-        # print("connections we made along the way",con_dict, len(con_dict['center0']) )
         return con_dict
+    
+    # def specify_connections(self, net_params):
+    #     """Build out connections at each inner node.
+
+    #     Connections describe what happens at the intersections. Here we link
+    #     lanes in straight lines, which means vehicles cannot turn at
+    #     intersections, they can only continue in a straight line.
+    #     """
+    #     con_dict = {}
+
+    #     def new_con(side, from_id, to_id, lane, signal_group):
+    #         return [{
+    #             "from": side + from_id,
+    #             "to": side + to_id,
+    #             "fromLane": str(lane),
+    #             "toLane": str(lane),
+    #             "signal_group": signal_group
+    #         }]
+    #     def new_2_con(side, side2, from_id, to_id, lane, signal_group):
+    #         return [{
+    #             "from": side + from_id,
+    #             "to": side2 + to_id,
+    #             "fromLane": str(lane),
+    #             "toLane": str(lane),
+    #             "signal_group": signal_group
+    #         }]
+
+        
+    #     # build connections at each inner node
+    #     for i in range(self.row_num):
+    #         for j in range(self.col_num):
+    #             node_id = "{}_{}".format(i, j)
+    #             right_node_id = "{}_{}".format(i, j + 1)
+    #             top_node_id = "{}_{}".format(i + 1, j)
+    #             conn = []
+    #             for lane in range(self.vertical_lanes):
+    #                 conn += new_con("bot", node_id, right_node_id, lane, 1)
+    #                 conn += new_con("top", right_node_id, node_id, lane, 1)
+                  
+    #             for lane in range(self.horizontal_lanes):
+    #                conn += new_con("right", node_id, top_node_id, lane, 2)
+    #                conn += new_con("left", top_node_id, node_id, lane, 2)
+
+    #             node_id = "center{}".format(i * self.col_num + j)
+    #             con_dict[node_id] = conn
+                
+    #     nodes = self.get_inner_nodes()
+    #     for node in nodes: 
+    #         match = re.search(r'\d+', node['id'])  # Find one or more digits in the string
+    #         node_num =  int(match.group()) if match else None  # Convert to int if found
+    #         j = node_num% self.col_num
+    #         i = node_num// self.col_num  
+            
+            
+    #         node_id = "{}_{}".format(i, j)
+    #         right_node_id = "{}_{}".format(i, j + 1)
+    #         top_node_id = "{}_{}".format(i + 1, j)
+            
+    #         conn = []
+    #         conn += new_2_con("bot","left", node_id, node_id, lane, 1)
+    #         conn += new_2_con("bot","right", node_id, top_node_id, lane, 1)
+    #         conn += new_2_con("bot","top", node_id, node_id, lane, 1)
+
+    #         j+= 1
+    #         conn += new_2_con("top","left", "{}_{}".format(i, j), "{}_{}".format(i, j - 1), lane, 1)
+    #         conn += new_2_con("top","right", "{}_{}".format(i, j), "{}_{}".format(i + 1, j - 1), lane, 1)
+    #         conn += new_2_con("top","bot", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 1)
+    #         j -=1
+    
+    #         conn += new_2_con("right","bot", node_id, "{}_{}".format(i, j + 1), lane, 2)
+    #         conn += new_2_con("right","top", node_id, node_id, lane, 2)
+    #         conn += new_2_con("right","left", node_id, node_id, lane, 2)
+
+    #         i+= 1
+    #         conn += new_2_con("left","bot", "{}_{}".format(i, j), "{}_{}".format(i - 1, j + 1), lane, 2)
+    #         conn += new_2_con("left","top", "{}_{}".format(i, j),"{}_{}".format(i - 1, j) , lane, 2)
+    #         conn += new_2_con("left","right", "{}_{}".format(i, j), "{}_{}".format(i, j), lane, 2)
+    #         i -= 1
+
+    #         node_id = "center{}".format(i * self.col_num + j)
+    #         con_dict[node_id] += conn
+                
+                
+
+    #     # print("connections we made along the way",con_dict, len(con_dict['center0']) )
+    #     return con_dict
     
     # TODO necessary?
     def specify_edge_starts(self):

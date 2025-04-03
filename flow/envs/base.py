@@ -359,10 +359,9 @@ class Env(gym.Env, metaclass=ABCMeta):
                         veh_id)
                     routing_actions.append(route_contr.choose_route(self))
             
-            # self.k.vehicle.choose_routes(routing_ids, routing_actions)
+            self.k.vehicle.choose_routes(routing_ids, routing_actions)
 
             self.apply_rl_actions(rl_actions)
-            print("end of step -----------------------------------------------------------------------------")
             self.additional_command()
 
             # advance the simulation in the simulator by one step
@@ -410,6 +409,7 @@ class Env(gym.Env, metaclass=ABCMeta):
         else:
             reward = self.compute_reward(rl_actions, fail=crash)
 
+        print("end of step -----------------------------------------------------------------------------\n\n")
         return next_observation, reward, done, infos
 
     def reset(self):

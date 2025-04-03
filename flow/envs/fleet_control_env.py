@@ -36,6 +36,8 @@ class FleetControlEnv(Env):
                 )
         super().__init__(env_params, sim_params, network, simulator)
         
+        self.prev_distances = np.zeros(env_params.additional_params["num_vehicles"])
+
         # Initialize vehicle destinations (randomly set for now)
         self.destinations = []
         edges = network.specify_edges(None)
@@ -67,15 +69,7 @@ class FleetControlEnv(Env):
                 rand_x = x_start + dx * rand_pos
                 rand_y = y_start + dy * rand_pos
                 
-                # print("Rand edge", rand_edge)
-                # print("Rand pos", rand_pos)
-                # print("x_start", x_start)
-                # print("y_start", y_start)
-                # print("dx", dx)
-                # print("dy", dy)
-                # print(f"Vehicle {i} candidate dest {rand_x, rand_y}")
                 if not ((rand_x, rand_y) in self.destinations):
-                    # print(f"Vehicle {i} received dest {rand_x, rand_y}")
                     self.destinations.append((rand_x, rand_y))
                     same_dest = False
 
@@ -87,6 +81,8 @@ class FleetControlEnv(Env):
         self.route_weight = 1.0
         self.all_vechicles = self.k.vehicle.get_ids()
         # print("all vechicles", self.all_vechicles)
+
+        # print("Vehicle routes", self.k.vehicle.get_route(self.k.vehicle.get_rl_ids()))
     
     @property
     def action_space(self):
@@ -96,17 +92,24 @@ class FleetControlEnv(Env):
         # Each action is formatted a sa flattened list which is required for compatibility
         # with Ray RLlib. The actions is a concatenated array with the following format:
         #       [accelerations for each vehicle] + [routing decisions for each vehicle]
+        # return Box(
+        #     low=np.array([-self.env_params.additional_params['max_decel']] * accel_dim +
+        #                 [0] * route_dim), # Array combining lowest acceleration values + min indexed routing action
+        #     high=np.array([self.env_params.additional_params['max_accel']] * accel_dim +
+        #                 [3] * route_dim),  # Array combining largest acceleration values + max indexed routing action, assuming 4 possible routes (0-3)
+        #     dtype=np.float32
+        # )
         return Box(
-            low=np.array([-self.env_params.additional_params['max_decel']] * accel_dim +
-                        [0] * route_dim), # Array combining lowest acceleration values + min indexed routing action
-            high=np.array([self.env_params.additional_params['max_accel']] * accel_dim +
-                        [3] * route_dim),  # Array combining largest acceleration values + max indexed routing action, assuming 4 possible routes (0-3)
+            low=np.array([-self.env_params.additional_params['max_decel']] * accel_dim), # Array combining lowest acceleration values + min indexed routing action
+            high=np.array([self.env_params.additional_params['max_accel']] * accel_dim),  # Array combining largest acceleration values + max indexed routing action, assuming 4 possible routes (0-3)
             dtype=np.float32
-    )
+        )
 
     @property
     def observation_space(self):
         num_vehicles = self.initial_vehicles.num_rl_vehicles
+
+        # NOTE: consider changing the observation from including (x,y) to including the edge
 
         # Each observation is formatted as a flattened list which is required for compatibility
         # with Ray RLlib. The observation is a concatenated array with the following format:
@@ -148,7 +151,7 @@ class FleetControlEnv(Env):
             # Weird case that is not understood, don't update the route
             match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", current_edge)
             if match is None:
-                print(match, "match is none", current_edge, "veh id", veh_id, "current route", current_route)
+                # print(match, "match is none", current_edge, "veh id", veh_id, "current route", current_route)
                 routes.append(current_route)
                 continue
 
@@ -185,13 +188,13 @@ class FleetControlEnv(Env):
                 node_num =  int(match.group()) if match else None  # Convert to int if found
                 j = node_num % col_num
                 i = node_num // col_num  
-                print("node id", intersection['id'], "i", i, "j", j)
+                # print("node id", intersection['id'], "i", i, "j", j)
                 if current_edge == "top{}_{}".format(i, j) or current_edge == "bot{}_{}".format(i, j+1) or \
                     current_edge == "left{}_{}".format(i, j) or current_edge == "right{}_{}".format(i+1, j):
                     near_intersection = False
                 else:
 
-                    print(" turn", veh_id, "current edge", current_edge, intersection['id'], "distance", min_distance)
+                    # print(" turn", veh_id, "current edge", current_edge, intersection['id'], "distance", min_distance)
                     near_intersection = True
                     allowed_actions = [0, 1, 2, 3]  
                     
@@ -207,7 +210,7 @@ class FleetControlEnv(Env):
                 # current_edge looks like bot{row}_{col}, or right{row}_{col}
                 #the numbers have to be the index of the current edge , current_edge looks like bot0_1
                 #############################################################################################
-                print("Veh id", veh_id, "near intersection","current edge", current_edge, "current route:",current_route,  )
+                # print("Veh id", veh_id, "near intersection","current edge", current_edge, "current route:",current_route,  )
                 if current_edge.startswith("bot"):
                     if direction_map[action] == 'top':
                         new_edge = "top{}_{}".format(row, col)
@@ -245,18 +248,19 @@ class FleetControlEnv(Env):
                     elif direction_map[action] == 'left':
                         new_edge = "left{}_{}".format(row - 1, col)  
                 else:
-                    print("Unknown edge type", current_edge)
+                    # print("Unknown edge type", current_edge)
+                    pass
                 
                 
                 match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", new_edge)
                 if match is None:
                     new_edge = current_edge
-                    print("panic match is none", new_edge, "veh id", veh_id, "current edge", current_edge, "direction", direction_map[action])
+                    # print("panic match is none", new_edge, "veh id", veh_id, "current edge", current_edge, "direction", direction_map[action])
                 else:  
                     row, col = int(match.group(2)), int(match.group(3))
                     if (row < 0 or row > 2 or \
                         col < 0 or col > 2):
-                        print("out of bounds", row, col)
+                        # print("out of bounds", row, col)
                         new_edge = current_edge
 
 
@@ -267,7 +271,7 @@ class FleetControlEnv(Env):
                     routes.append((current_edge))
                 
             else:
-                print("not near intersection", veh_id, "current edge", current_edge)
+                # print("not near intersection", veh_id, "current edge", current_edge)
                 routes.append((current_edge))
         
         return routes
@@ -277,21 +281,25 @@ class FleetControlEnv(Env):
         num_vehicles = len(ids)
 
        
-
+        # print("Apply rl actions - Vehicle routes", self.k.vehicle.get_route(self.k.vehicle.get_rl_ids()))
         # Split the flattened actions back into acceleration and routing components
         # The first half of the array of actions holds the acceleration values, while 
         # the second half holds the routing values
-        accel_actions = rl_actions[:num_vehicles]
-        route_actions = rl_actions[num_vehicles:]
-        print("Applying route actions", route_actions)
+        # accel_actions = rl_actions[:num_vehicles]
+        # route_actions = rl_actions[num_vehicles:]
+
+        # print("Applying route actions", rl_actions)
+
+        print("Velocities before accel:", self.k.vehicle.get_speed(ids))
+        print("RL actions:", rl_actions)
         # Update vehicle accelerations
-        self.k.vehicle.apply_acceleration(ids, accel_actions)
+        self.k.vehicle.apply_acceleration(ids, rl_actions)
 
         # Update vehicle routes based on route actions
         # print(f"Current routes: {self.k.vehicle.get_route(ids)}")
-        routes = self.get_updated_route(ids, route_actions)
+        # routes = self.get_updated_route(ids, route_actions)
         # print(f"Updated routes: {routes}")
-        self.k.vehicle.choose_routes(ids, routes)
+        # self.k.vehicle.choose_routes(ids, routes)
 
     def compute_distance_traveled(self, curr_positions, prev_positions):
         # Calculate element-wise Euclidean distances of each vehicle)
@@ -310,7 +318,25 @@ class FleetControlEnv(Env):
         # Return cumulative distance for the fleet
         return np.sum(distances)
     
+    def compute_edge_distance(self, prev_edges, curr_edges, routes):
+        prev_idxs = np.array([routes.index(prev_edge) for prev_edge in prev_edges])
+        curr_idxs = np.array([routes.index(curr_edge) for curr_edge in curr_edges])
+
+        hops = curr_idxs - prev_idxs
+
+        pos_along_curr_edge = self.k.vehicle.get
+        distances = hops * 30  # edge length
+        # hops = []
+        # for i in range(len(prev_idxs)):
+        #     if prev_idxs[i] <= curr_idxs[i]:
+        #         hops.append(curr_idxs[i] - prev_idxs[i])
+        #     else:
+        #         hops.append(len(prev_idxs) + )
+
+
     def compute_reward(self, rl_actions, **kwargs):
+        num_vehicles = self.env_params.additional_params["num_vehicles"]
+
         ids = self.k.vehicle.get_rl_ids()
         # print(ids, len(ids))
         # Get current (x,y) positions for each vehicle
@@ -321,29 +347,56 @@ class FleetControlEnv(Env):
             self.prev_positions = positions
             return 0  # Return 0 reward on first step
         
+
+        curr_edges = self.k.vehicle.get_edge(ids)
+        routes = self.k.vehicle.get_route(ids)
+
+        curr_distances = np.zeros(num_vehicles)
+        np.copyto(curr_distances, self.prev_distances)
+
+        for id in ids:
+            vehicle_num = int(id.split("_")[-1])
+            curr_distances[vehicle_num] = self.k.vehicle.get_distance(id)
+
+        distances = curr_distances - self.prev_distances
+        print("Prev dis:", self.prev_distances)
+        print("Curr dis:", curr_distances)
+        print("Vehicle Dis:", distances)
+
+        self.prev_distances = curr_distances
+
+        # distances = np.array(self.k.vehicle.get_distance(ids))
+        # dist = compute_edge_distance(prev_edges, curr_edges, routes)
+
         # Emission reward is MPG metric (does this need to be scaled by time?)
-        distance_traveled = self.compute_distance_traveled(positions, self.prev_positions)
+        # distance_traveled = self.compute_distance_traveled(positions, self.prev_positions)
         
         # Avoid division by zero
-        fuel_consumed = np.sum(np.array([self.k.vehicle.get_fuel_consumption(id) for id in ids]))
-        emission_rewards = distance_traveled / max(fuel_consumed, 0.0001)
+        fuels = np.array([self.k.vehicle.get_fuel_consumption(id) for id in ids])
+        fuel_consumed = np.sum(fuels)
+        emission_reward = np.sum(distances) / max(fuel_consumed, 0.0001)
+
+        print("Vehicle Vel after accel:", self.k.vehicle.get_speed(ids))
+        print("Vehicle Fue:", fuels)
+        print("Reward:", emission_reward)
 
         # update prev positions
         self.prev_positions = positions
 
         # This will be a list of booleans where the ith element is true if positions[i] = destinations[i]
-        destinations_reached = []
-        for i in range(len(ids)):
-            dist = np.linalg.norm(np.array(positions[i]) - np.array(self.destinations[i]))
-            if dist < 5.0:
-                destinations_reached.append(True)
-            else:
-                destinations_reached.append(False)
+        # destinations_reached = []
+        # for i in range(len(ids)):
+        #     dist = np.linalg.norm(np.array(positions[i]) - np.array(self.destinations[i]))
+        #     if dist < 5.0:
+        #         destinations_reached.append(True)
+        #     else:
+        #         destinations_reached.append(False)
 
         
         # Agent accumulates -1 rewards for each vehicle that is not at its destination
-        route_reward = np.sum(np.array([1 if reached else -1 for reached in destinations_reached]))
+        # route_reward = np.sum(np.array([1 if reached else -1 for reached in destinations_reached]))
 
+        return emission_reward
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
     def get_state(self):        
