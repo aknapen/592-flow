@@ -250,8 +250,8 @@ class FleetControlEnv(Env):
                 
                 match = re.match(r"(bot|right|top|left)(\d+)_(\d+)", new_edge)
                 if match is None:
-                    new_edge = current_edge
                     print("panic match is none", new_edge, "veh id", veh_id, "current edge", current_edge, "direction", direction_map[action])
+                    new_edge = current_edge
                 else:  
                     row, col = int(match.group(2)), int(match.group(3))
                     if (row < 0 or row > 2 or \
