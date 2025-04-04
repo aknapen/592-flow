@@ -35,6 +35,10 @@ class FleetControlEnv(Env):
                     'Environment parameter \'{}\' not supplied'.format(p)
                 )
         super().__init__(env_params, sim_params, network, simulator)
+
+        self.returnReward = 0
+        self.tot_steps = 0
+        self.total_mpg = 0
         
         self.prev_distances = np.zeros(env_params.additional_params["num_vehicles"])
 
@@ -290,8 +294,8 @@ class FleetControlEnv(Env):
 
         # print("Applying route actions", rl_actions)
 
-        print("Velocities before accel:", self.k.vehicle.get_speed(ids))
-        print("RL actions:", rl_actions)
+        # print("Velocities before accel:", self.k.vehicle.get_speed(ids))
+        # print("RL actions:", rl_actions)
         # Update vehicle accelerations
         self.k.vehicle.apply_acceleration(ids, rl_actions)
 
@@ -359,9 +363,9 @@ class FleetControlEnv(Env):
             curr_distances[vehicle_num] = self.k.vehicle.get_distance(id)
 
         distances = curr_distances - self.prev_distances
-        print("Prev dis:", self.prev_distances)
-        print("Curr dis:", curr_distances)
-        print("Vehicle Dis:", distances)
+        # print("Prev dis:", self.prev_distances)
+        # print("Curr dis:", curr_distances)
+        # print("Vehicle Dis:", distances)
 
         self.prev_distances = curr_distances
 
@@ -376,9 +380,9 @@ class FleetControlEnv(Env):
         fuel_consumed = np.sum(fuels)
         emission_reward = np.sum(distances) / max(fuel_consumed, 0.0001)
 
-        print("Vehicle Vel after accel:", self.k.vehicle.get_speed(ids))
-        print("Vehicle Fue:", fuels)
-        print("Reward:", emission_reward)
+        # print("Vehicle Vel after accel:", self.k.vehicle.get_speed(ids))
+        # print("Vehicle Fue:", fuels)
+        # print("Reward:", emission_reward)
 
         # update prev positions
         self.prev_positions = positions
@@ -396,6 +400,13 @@ class FleetControlEnv(Env):
         # Agent accumulates -1 rewards for each vehicle that is not at its destination
         # route_reward = np.sum(np.array([1 if reached else -1 for reached in destinations_reached]))
 
+        self.tot_steps += 1
+        self.total_mpg += emission_reward
+        curr_reward = self.total_mpg/ self.tot_steps
+        self.returnReward += curr_reward
+
+        print("Current Reward:",curr_reward)
+        print ("Total Reward:", self.returnReward )
         return emission_reward
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 

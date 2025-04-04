@@ -154,7 +154,7 @@ def setup_exps_rllib(flow_params,
     config["kl_target"] = 0.02
     config["num_sgd_iter"] = 10
     config["horizon"] = horizon
-
+    config["sample_batch_size"] = horizon * n_rollouts
     # save the flow params for replay
     flow_json = json.dumps(
         flow_params, cls=FlowParamsEncoder, sort_keys=True, indent=4)

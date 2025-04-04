@@ -13,9 +13,9 @@ from flow.networks.fleet_grid import FleetGridNetwork, ADDITIONAL_NET_PARAMS
 
 
 # time horizon of a single rollout
-HORIZON = 64
+HORIZON = 128
 # number of rollouts per training iteration
-N_ROLLOUTS = 2
+N_ROLLOUTS =2
 # number of parallel workers
 N_CPUS = 1
 # set to True if you would like to run the experiment with inflows of vehicles
