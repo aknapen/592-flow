@@ -179,7 +179,7 @@ class FleetControlEnv(Env):
                 # print(node['radius'], "node radius")
                 # TODO: find optimal distance
 
-            if min_distance < 10:
+            if min_distance < 7:
                 col_num = 2
                 match = re.search(r'\d+', intersection['id'])  # Find one or more digits in the string
                 node_num =  int(match.group()) if match else None  # Convert to int if found
@@ -298,7 +298,9 @@ class FleetControlEnv(Env):
         # print("curr positions", curr_positions, "prev positions", prev_positions)
         distances = []
         if len(prev_positions) > 0 and len(curr_positions) >0:
-            for i in range(len(curr_positions)):
+            count = min(len(curr_positions), len(prev_positions))
+            for i in range(count):
+            # for i in range(len(curr_positions)):
                 # Calculate distance for each vehicle
                 dist = np.sqrt(np.power(curr_positions[i][0] - prev_positions[i][0], 2) + 
                                np.power(curr_positions[i][1] - prev_positions[i][1], 2))
