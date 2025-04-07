@@ -39,6 +39,10 @@ class FleetControlEnv(Env):
         self.returnReward = 0
         self.tot_steps = 0
         self.total_mpg = 0
+        self.total_distance = 0
+        self.total_fuel = 0
+        self.homoerectus  = True
+
         
         self.prev_distances = np.zeros(env_params.additional_params["num_vehicles"])
 
@@ -281,6 +285,8 @@ class FleetControlEnv(Env):
         return routes
     
     def _apply_rl_actions(self, rl_actions):
+        print("in apply rl actions")
+        
         ids = self.k.vehicle.get_rl_ids()
         num_vehicles = len(ids)
 
@@ -341,8 +347,12 @@ class FleetControlEnv(Env):
     def compute_reward(self, rl_actions, **kwargs):
         num_vehicles = self.env_params.additional_params["num_vehicles"]
 
-        ids = self.k.vehicle.get_rl_ids()
-        # print(ids, len(ids))
+        if(not self.homoerectus):
+            ids = self.k.vehicle.get_human_ids()
+        
+        else:
+            ids = self.k.vehicle.get_rl_ids()
+        print(ids, len(ids))
         # Get current (x,y) positions for each vehicle
         positions = np.array([self.k.vehicle.get_2d_position(id) for id in ids])
 
@@ -378,8 +388,14 @@ class FleetControlEnv(Env):
         # Avoid division by zero
         fuels = np.array([self.k.vehicle.get_fuel_consumption(id) for id in ids])
         fuel_consumed = np.sum(fuels)
+        print('distances', distances, "fuel consumed", fuels)
         emission_reward = np.sum(distances) / max(fuel_consumed, 0.0001)
-
+        
+        self.total_distance += np.sum(distances)
+        self.total_fuel += fuel_consumed
+        
+        print(self.total_distance / self.total_fuel,"----------------------------------------------------------------------------------------")
+        
         # print("Vehicle Vel after accel:", self.k.vehicle.get_speed(ids))
         # print("Vehicle Fue:", fuels)
         # print("Reward:", emission_reward)
@@ -402,11 +418,12 @@ class FleetControlEnv(Env):
 
         self.tot_steps += 1
         self.total_mpg += emission_reward
-        curr_reward = self.total_mpg/ self.tot_steps
-        self.returnReward += curr_reward
+        avg_reward = self.total_mpg/ self.tot_steps
+        self.returnReward += avg_reward
 
-        print("Current Reward:",curr_reward)
+        print("avg Reward:",avg_reward)
         print ("Total Reward:", self.returnReward )
+        print("Emission reward:", emission_reward)
         return emission_reward
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
@@ -416,6 +433,11 @@ class FleetControlEnv(Env):
         # print("in get state")
 
         ids = self.k.vehicle.get_rl_ids()
+        if(not self.homoerectus):
+            ids = self.k.vehicle.get_human_ids()
+        
+        else:
+            ids = self.k.vehicle.get_rl_ids()
             
         # Collect all the speeds and (x,y) positions of the vehicles
         speeds = []
