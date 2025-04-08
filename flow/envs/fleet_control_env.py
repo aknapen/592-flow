@@ -41,7 +41,7 @@ class FleetControlEnv(Env):
         self.total_mpg = 0
         self.total_distance = 0
         self.total_fuel = 0
-        self.homoerectus  = True
+        self.rlTraining  = True
 
         
         self.prev_distances = np.zeros(env_params.additional_params["num_vehicles"])
@@ -347,7 +347,7 @@ class FleetControlEnv(Env):
     def compute_reward(self, rl_actions, **kwargs):
         num_vehicles = self.env_params.additional_params["num_vehicles"]
 
-        if(not self.homoerectus):
+        if(not self.rlTraining):
             ids = self.k.vehicle.get_human_ids()
         
         else:
@@ -434,7 +434,7 @@ class FleetControlEnv(Env):
         # print("in get state")
 
         ids = self.k.vehicle.get_rl_ids()
-        if(not self.homoerectus):
+        if(not self.rlTraining):
             ids = self.k.vehicle.get_human_ids()
         
         else:
