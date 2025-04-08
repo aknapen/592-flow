@@ -1,4 +1,5 @@
-from examples.exp_configs.rl.singleagent.flowagent import flow_params
+# from examples.exp_configs.rl.singleagent.flowagent import flow_params
+from examples.exp_configs.rl.singleagent.flowidm import flow_params
 from flow.core.experiment import Experiment
 
 
