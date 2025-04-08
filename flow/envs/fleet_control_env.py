@@ -9,7 +9,7 @@ from flow.networks.fleet_grid import ADDITIONAL_NET_PARAMS
 
 ADDITIONAL_ENV_PARAMS = {
     # Number of vehicles in the fleet
-    'num_vehicles': 4,
+    'num_vehicles': 14,
     # Maximum acceleration for autonomous vehicles, in m/s^2
     'max_accel': 3,
     # Maximum deceleration for autonomous vehicles, in m/s^2
@@ -405,8 +405,8 @@ class FleetControlEnv(Env):
         curr_reward = self.total_mpg/ self.tot_steps
         self.returnReward += curr_reward
 
-        print("Current Reward:",curr_reward)
-        print ("Total Reward:", self.returnReward )
+        # print("Current Reward:",curr_reward)
+        # print ("Total Reward:", self.returnReward )
         return emission_reward
         return self.emission_weight * emission_rewards + self.route_weight * route_reward
 

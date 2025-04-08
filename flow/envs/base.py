@@ -409,7 +409,7 @@ class Env(gym.Env, metaclass=ABCMeta):
         else:
             reward = self.compute_reward(rl_actions, fail=crash)
 
-        print("end of step -----------------------------------------------------------------------------\n\n")
+        # print("end of step -----------------------------------------------------------------------------\n\n")
         return next_observation, reward, done, infos
 
     def reset(self):
