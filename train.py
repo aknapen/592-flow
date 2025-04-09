@@ -148,7 +148,7 @@ def setup_exps_rllib(flow_params,
     config["train_batch_size"] = horizon * n_rollouts
     config["sgd_minibatch_size"] = max(128, horizon)  # Adjust based on rollout size
     config["gamma"] = 0.999  # discount rate
-    config["model"].update({"fcnet_hiddens": [32, 32, 32]})
+    config["model"].update({"fcnet_hiddens": [16, 16, 16]})
     config["use_gae"] = True
     config["lambda"] = 0.97
     config["kl_target"] = 0.02
@@ -156,7 +156,7 @@ def setup_exps_rllib(flow_params,
     config["horizon"] = horizon
     config["vf_clip_param"] = 10000
     config["sample_batch_size"] = horizon * n_rollouts
-    config["sgd_minibatch_size"] = 64
+    config["sgd_minibatch_size"] = horizon
     # save the flow params for replay
     flow_json = json.dumps(
         flow_params, cls=FlowParamsEncoder, sort_keys=True, indent=4)

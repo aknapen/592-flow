@@ -13,9 +13,9 @@ from flow.networks.fleet_grid import FleetGridNetwork, ADDITIONAL_NET_PARAMS
 
 
 # time horizon of a single rollout
-HORIZON = 13
+HORIZON = 45
 # number of rollouts per training iteration
-N_ROLLOUTS =2
+N_ROLLOUTS =5
 # number of parallel workers
 N_CPUS = 1
 # set to True if you would like to run the experiment with inflows of vehicles
@@ -125,8 +125,8 @@ V_ENTER = 15
 INNER_LENGTH = 30
 LONG_LENGTH = 30
 SHORT_LENGTH = 30
-N_ROWS = 2
-N_COLUMNS = 2
+N_ROWS = 5
+N_COLUMNS = 5
 NUM_CARS_LEFT = 1
 NUM_CARS_RIGHT = 1
 NUM_CARS_TOP = 1
@@ -179,7 +179,7 @@ vehicles.add(
     # ),
     # TODO: add routing controller
     routing_controller=(GridRouter, {}),
-    num_vehicles=4)
+    num_vehicles=15)
 
 # collect the initialization and network-specific parameters based on the
 # choice to use inflows or not
@@ -211,6 +211,8 @@ flow_params = dict(
     sim=SumoParams(
         sim_step=1,
         render=False,
+        emission_path='./emissions_output',
+        restart_instance=False
     ),
 
     # environment related parameters (see flow.core.params.EnvParams)

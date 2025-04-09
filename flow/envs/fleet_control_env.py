@@ -8,8 +8,8 @@ from gym.spaces.box import Box
 from flow.networks.fleet_grid import ADDITIONAL_NET_PARAMS
 
 ADDITIONAL_ENV_PARAMS = {
-    # Number of vehicles in the fleet
-    'num_vehicles': 14,
+    # Number of vehicles in the fleet **must change here
+    'num_vehicles': 15,
     # Maximum acceleration for autonomous vehicles, in m/s^2
     'max_accel': 3,
     # Maximum deceleration for autonomous vehicles, in m/s^2
@@ -40,7 +40,7 @@ class FleetControlEnv(Env):
         self.tot_steps = 0
         self.total_mpg = 0
         self.total_distance = 0
-        self.total_fuel = 0
+        self.total_fuel = 0.0000001
         self.rlTraining  = True
 
         
@@ -285,7 +285,7 @@ class FleetControlEnv(Env):
         return routes
     
     def _apply_rl_actions(self, rl_actions):
-        print("in apply rl actions")
+        # print("in apply rl actions")
         
         ids = self.k.vehicle.get_rl_ids()
         num_vehicles = len(ids)
@@ -352,7 +352,7 @@ class FleetControlEnv(Env):
         
         else:
             ids = self.k.vehicle.get_rl_ids()
-        print(ids, len(ids))
+        # print(ids, len(ids))
         # Get current (x,y) positions for each vehicle
         positions = np.array([self.k.vehicle.get_2d_position(id) for id in ids])
 
@@ -388,8 +388,8 @@ class FleetControlEnv(Env):
         # Avoid division by zero
         fuels = np.array([self.k.vehicle.get_fuel_consumption(id) for id in ids])
         fuel_consumed = np.sum(fuels)
-        print('distances', distances, "fuel consumed", fuels)
-        emission_reward = np.sum(distances) / max(fuel_consumed, 0.0001)
+        # print('distances', distances, "fuel consumed", fuels)
+        # emission_reward = np.sum(distances) / max(fuel_consumed, 0.0001)
         
         self.total_distance += np.sum(distances)
         self.total_fuel += fuel_consumed
@@ -417,16 +417,16 @@ class FleetControlEnv(Env):
         # route_reward = np.sum(np.array([1 if reached else -1 for reached in destinations_reached]))
 
         self.tot_steps += 1
-        self.total_mpg += emission_reward
-        avg_reward = self.total_mpg/ self.tot_steps
-        self.returnReward += avg_reward
+        # self.total_mpg += emission_reward
+        # avg_reward = self.total_mpg/ self.tot_steps
+        # self.returnReward += avg_reward
 
         # print("avg Reward:",avg_reward)
         # print ("Total Reward:", self.returnReward )
         # print("Emission reward:", emission_reward)
-        print("value of reward", valueofReward, "*************************************")
+        # print("value of reward", valueofReward, "*************************************")
         return valueofReward
-        return self.emission_weight * emission_rewards + self.route_weight * route_reward
+        # return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
     def get_state(self):        
          

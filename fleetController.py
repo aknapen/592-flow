@@ -4,7 +4,7 @@ from flow.core.experiment import Experiment
 
 
 # # number of time steps
-flow_params['env'].horizon = 30
+flow_params['env'].horizon = 45
 exp = Experiment(flow_params)
 
 # run the sumo simulation
