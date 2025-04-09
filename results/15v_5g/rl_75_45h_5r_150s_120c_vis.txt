@@ -1,0 +1,24 @@
+Round 0, Return: 576.1622537652713
+==== Summary of results ====
+Return:
+[3.377299290772938]
+[576.1622537652713]
+Average, std: 576.1622537652713, 0.0
+
+Speed, mean (m/s):
+[3.377299290772938]
+Average, std: 3.377299290772938, 0.0
+
+Speed, std (m/s):
+[1.2707138567785852]
+Average, std: 1.2707138567785852, 0.0
+
+Outflows (veh/hr):
+[240.0]
+Average, std: 240.0, 0.0
+Inflows (veh/hr):
+[0.0]
+Average, std: 0.0, 0.0
+Throughput efficiency (veh/hr):
+[0]
+Average, std: 0.0, 0.0

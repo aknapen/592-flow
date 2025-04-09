@@ -1,0 +1,2019 @@
+flags Namespace(checkpoint_path=None, exp_config='flowagent', num_cpus=1, num_steps=100, rl_trainer='rllib', rollout_size=1000)
+== Status ==
+Memory usage on this node: 10.9/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+-------+
+| Trial name                      | status   | loc   |
+|---------------------------------+----------+-------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  |       |
++---------------------------------+----------+-------+
+
+
+[2m[36m(pid=287661)[0m 2025-04-09 11:00:59,464	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=287661)[0m 2025-04-09 11:00:59,838	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=287661)[0m 2025-04-09 11:01:05,442	WARNING util.py:45 -- Install gputil for GPU system monitoring.
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-10
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 422.45597828110544
+  episode_reward_mean: 157.17155746245834
+  episode_reward_min: 63.48585540717713
+  episodes_this_iter: 5
+  episodes_total: 5
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 529.085
+    learner:
+      default_policy:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 4.999999873689376e-05
+        entropy: 21.338420867919922
+        entropy_coeff: 0.0
+        kl: 0.005133834667503834
+        policy_loss: -0.02930573560297489
+        total_loss: 5216302205501440.0
+        vf_explained_var: 0.0
+        vf_loss: 5216302205501440.0
+    load_time_ms: 116.127
+    num_steps_sampled: 225
+    num_steps_trained: 225
+    sample_time_ms: 3272.718
+    update_time_ms: 1159.103
+  iterations_since_restore: 1
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 33.175
+    ram_util_percent: 75.7375
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 7.1026487688047695
+    mean_inference_ms: 1.1132459724898887
+    mean_processing_ms: 0.5748873263333751
+  time_since_restore: 5.144190311431885
+  time_this_iter_s: 5.144190311431885
+  time_total_s: 5.144190311431885
+  timestamp: 1744210870
+  timesteps_since_restore: 225
+  timesteps_this_iter: 225
+  timesteps_total: 225
+  training_iteration: 1
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |      1 |          5.14419 |         225 |  157.172 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-16
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 422.45597828110544
+  episode_reward_mean: 56.90592847268132
+  episode_reward_min: 11.922442339609917
+  episodes_this_iter: 5
+  episodes_total: 20
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 201.258
+    learner:
+      default_policy:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 4.999999873689376e-05
+        entropy: 21.040246963500977
+        entropy_coeff: 0.0
+        kl: 0.00556902214884758
+        policy_loss: -0.029554974287748337
+        total_loss: 49161898557440.0
+        vf_explained_var: 0.0
+        vf_loss: 49161898557440.0
+    load_time_ms: 29.769
+    num_steps_sampled: 900
+    num_steps_trained: 900
+    sample_time_ms: 2090.638
+    update_time_ms: 292.63
+  iterations_since_restore: 4
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 21.9
+    ram_util_percent: 76.0
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 6.856971336377955
+    mean_inference_ms: 0.9678990607235752
+    mean_processing_ms: 0.5943976315593499
+  time_since_restore: 10.53420376777649
+  time_this_iter_s: 1.4277584552764893
+  time_total_s: 10.53420376777649
+  timestamp: 1744210876
+  timesteps_since_restore: 900
+  timesteps_this_iter: 225
+  timesteps_total: 900
+  training_iteration: 4
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |      4 |          10.5342 |         900 |  56.9059 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-21
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 422.45597828110544
+  episode_reward_mean: 32.941808286536215
+  episode_reward_min: 5.614449993099108
+  episodes_this_iter: 5
+  episodes_total: 40
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 133.855
+    learner:
+      default_policy:
+        cur_kl_coeff: 0.0031250000465661287
+        cur_lr: 4.999999873689376e-05
+        entropy: 21.025300979614258
+        entropy_coeff: 0.0
+        kl: 0.011552698910236359
+        policy_loss: -0.06078057736158371
+        total_loss: 12081793335296.0
+        vf_explained_var: -2.3841858265427618e-08
+        vf_loss: 12081793335296.0
+    load_time_ms: 15.341
+    num_steps_sampled: 1800
+    num_steps_trained: 1800
+    sample_time_ms: 1702.211
+    update_time_ms: 147.825
+  iterations_since_restore: 8
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 18.0
+    ram_util_percent: 75.9
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 6.383538583647093
+    mean_inference_ms: 0.8591991558901114
+    mean_processing_ms: 0.5544009351727119
+  time_since_restore: 16.081020832061768
+  time_this_iter_s: 1.293121099472046
+  time_total_s: 16.081020832061768
+  timestamp: 1744210881
+  timesteps_since_restore: 1800
+  timesteps_this_iter: 225
+  timesteps_total: 1800
+  training_iteration: 8
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |      8 |           16.081 |        1800 |  32.9418 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-26
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 422.45597828110544
+  episode_reward_mean: 25.484470133901347
+  episode_reward_min: 4.299394172385656
+  episodes_this_iter: 5
+  episodes_total: 55
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 81.313
+    learner:
+      default_policy:
+        cur_kl_coeff: 0.0007812500116415322
+        cur_lr: 4.999999873689376e-05
+        entropy: 21.047412872314453
+        entropy_coeff: 0.0
+        kl: 0.007730702869594097
+        policy_loss: -0.04226932302117348
+        total_loss: 5006426112000.0
+        vf_explained_var: -9.536743306171047e-08
+        vf_loss: 5006426112000.0
+    load_time_ms: 0.946
+    num_steps_sampled: 2475
+    num_steps_trained: 2475
+    sample_time_ms: 1508.749
+    update_time_ms: 3.495
+  iterations_since_restore: 11
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 23.26666666666667
+    ram_util_percent: 75.96666666666667
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 6.186857262703491
+    mean_inference_ms: 0.8187307351455093
+    mean_processing_ms: 0.5370713549290185
+  time_since_restore: 21.118794202804565
+  time_this_iter_s: 1.6951050758361816
+  time_total_s: 21.118794202804565
+  timestamp: 1744210886
+  timesteps_since_restore: 2475
+  timesteps_this_iter: 225
+  timesteps_total: 2475
+  training_iteration: 11
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     11 |          21.1188 |        2475 |  25.4845 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-32
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 422.45597828110544
+  episode_reward_mean: 19.8212558441635
+  episode_reward_min: 2.961097111029732
+  episodes_this_iter: 5
+  episodes_total: 75
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 74.095
+    learner:
+      default_policy:
+        cur_kl_coeff: 4.882812572759576e-05
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.905319213867188
+        entropy_coeff: 0.0
+        kl: 0.009583169594407082
+        policy_loss: -0.03978075087070465
+        total_loss: 3320193482752.0
+        vf_explained_var: -1.1920929132713809e-08
+        vf_loss: 3320193482752.0
+    load_time_ms: 0.913
+    num_steps_sampled: 3375
+    num_steps_trained: 3375
+    sample_time_ms: 1374.87
+    update_time_ms: 3.223
+  iterations_since_restore: 15
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.25
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 6.011465594665363
+    mean_inference_ms: 0.7839868697734027
+    mean_processing_ms: 0.5208126472576519
+  time_since_restore: 26.600026845932007
+  time_this_iter_s: 1.3322231769561768
+  time_total_s: 26.600026845932007
+  timestamp: 1744210892
+  timesteps_since_restore: 3375
+  timesteps_this_iter: 225
+  timesteps_total: 3375
+  training_iteration: 15
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     15 |             26.6 |        3375 |  19.8213 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-38
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 422.45597828110544
+  episode_reward_mean: 16.32141672654647
+  episode_reward_min: 2.1887130552974945
+  episodes_this_iter: 5
+  episodes_total: 95
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 77.885
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.220703143189894e-05
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.650592803955078
+        entropy_coeff: 0.0
+        kl: 0.014596383087337017
+        policy_loss: -0.057172346860170364
+        total_loss: 1552203513856.0
+        vf_explained_var: 5.960464477539063e-08
+        vf_loss: 1552203513856.0
+    load_time_ms: 0.953
+    num_steps_sampled: 4275
+    num_steps_trained: 4275
+    sample_time_ms: 1389.186
+    update_time_ms: 3.586
+  iterations_since_restore: 19
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 20.55
+    ram_util_percent: 75.94999999999999
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.883362600566254
+    mean_inference_ms: 0.7599789850134118
+    mean_processing_ms: 0.5101839217004707
+  time_since_restore: 32.539804458618164
+  time_this_iter_s: 1.3835420608520508
+  time_total_s: 32.539804458618164
+  timestamp: 1744210898
+  timesteps_since_restore: 4275
+  timesteps_this_iter: 225
+  timesteps_total: 4275
+  training_iteration: 19
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     19 |          32.5398 |        4275 |  16.3214 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-43
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 27.45514101014074
+  episode_reward_mean: 6.370469341367446
+  episode_reward_min: 2.029322802186379
+  episodes_this_iter: 5
+  episodes_total: 110
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 78.524
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.220703143189894e-05
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.743745803833008
+        entropy_coeff: 0.0
+        kl: 0.009646843187510967
+        policy_loss: -0.04624145105481148
+        total_loss: 1771661426688.0
+        vf_explained_var: 1.1920929132713809e-08
+        vf_loss: 1771661426688.0
+    load_time_ms: 0.943
+    num_steps_sampled: 4950
+    num_steps_trained: 4950
+    sample_time_ms: 1440.196
+    update_time_ms: 3.439
+  iterations_since_restore: 22
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 30.733333333333334
+    ram_util_percent: 75.76666666666667
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.692472582611292
+    mean_inference_ms: 0.7169600663456024
+    mean_processing_ms: 0.49609541349199987
+  time_since_restore: 37.83298587799072
+  time_this_iter_s: 2.234670400619507
+  time_total_s: 37.83298587799072
+  timestamp: 1744210903
+  timesteps_since_restore: 4950
+  timesteps_this_iter: 225
+  timesteps_total: 4950
+  training_iteration: 22
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.6/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     22 |           37.833 |        4950 |  6.37047 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-49
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 11.879667609169292
+  episode_reward_mean: 4.275366482966949
+  episode_reward_min: 1.6466594328442683
+  episodes_this_iter: 5
+  episodes_total: 125
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 89.915
+    learner:
+      default_policy:
+        cur_kl_coeff: 6.10351571594947e-06
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.486440658569336
+        entropy_coeff: 0.0
+        kl: 0.010441916063427925
+        policy_loss: -0.0430150106549263
+        total_loss: 1206376595456.0
+        vf_explained_var: 4.7683716530855236e-08
+        vf_loss: 1206376595456.0
+    load_time_ms: 0.941
+    num_steps_sampled: 5625
+    num_steps_trained: 5625
+    sample_time_ms: 1616.969
+    update_time_ms: 3.871
+  iterations_since_restore: 25
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 25.4
+    ram_util_percent: 75.85
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.552908205618831
+    mean_inference_ms: 0.690892358932374
+    mean_processing_ms: 0.4832192217465618
+  time_since_restore: 43.74926805496216
+  time_this_iter_s: 1.9571914672851562
+  time_total_s: 43.74926805496216
+  timestamp: 1744210909
+  timesteps_since_restore: 5625
+  timesteps_this_iter: 225
+  timesteps_total: 5625
+  training_iteration: 25
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     25 |          43.7493 |        5625 |  4.27537 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-01-55
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 6.7942378203342635
+  episode_reward_mean: 3.1659267673812126
+  episode_reward_min: 1.4518477690683944
+  episodes_this_iter: 5
+  episodes_total: 145
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 86.544
+    learner:
+      default_policy:
+        cur_kl_coeff: 3.051757857974735e-06
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.58291244506836
+        entropy_coeff: 0.0
+        kl: 0.01184430904686451
+        policy_loss: -0.054795850068330765
+        total_loss: 1106365513728.0
+        vf_explained_var: -2.3841858265427618e-08
+        vf_loss: 1106365513728.0
+    load_time_ms: 0.897
+    num_steps_sampled: 6525
+    num_steps_trained: 6525
+    sample_time_ms: 1630.636
+    update_time_ms: 3.77
+  iterations_since_restore: 29
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.549999999999997
+    ram_util_percent: 75.5
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.515824863572309
+    mean_inference_ms: 0.6836252778500981
+    mean_processing_ms: 0.4822573226650812
+  time_since_restore: 49.79000425338745
+  time_this_iter_s: 1.4233696460723877
+  time_total_s: 49.79000425338745
+  timestamp: 1744210915
+  timesteps_since_restore: 6525
+  timesteps_this_iter: 225
+  timesteps_total: 6525
+  training_iteration: 29
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.6/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     29 |            49.79 |        6525 |  3.16593 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-01
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 5.510157121630876
+  episode_reward_mean: 2.6254942448851035
+  episode_reward_min: 1.3396627940343884
+  episodes_this_iter: 5
+  episodes_total: 160
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 89.6
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.5258789289873675e-06
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.4813289642334
+        entropy_coeff: 0.0
+        kl: 0.007613489869982004
+        policy_loss: -0.03436315059661865
+        total_loss: 889314738176.0
+        vf_explained_var: 0.0
+        vf_loss: 889314738176.0
+    load_time_ms: 0.922
+    num_steps_sampled: 7200
+    num_steps_trained: 7200
+    sample_time_ms: 1642.596
+    update_time_ms: 3.719
+  iterations_since_restore: 32
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 29.53333333333333
+    ram_util_percent: 75.66666666666667
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.505744598311903
+    mean_inference_ms: 0.6810866972609965
+    mean_processing_ms: 0.483650878767962
+  time_since_restore: 55.2335205078125
+  time_this_iter_s: 2.063075065612793
+  time_total_s: 55.2335205078125
+  timestamp: 1744210921
+  timesteps_since_restore: 7200
+  timesteps_this_iter: 225
+  timesteps_total: 7200
+  training_iteration: 32
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.6/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     32 |          55.2335 |        7200 |  2.62549 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-06
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 4.8122353371632025
+  episode_reward_mean: 2.2485486308511176
+  episode_reward_min: 1.1581554239029546
+  episodes_this_iter: 5
+  episodes_total: 175
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 82.066
+    learner:
+      default_policy:
+        cur_kl_coeff: 3.814697322468419e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.621685028076172
+        entropy_coeff: 0.0
+        kl: 0.012437911704182625
+        policy_loss: -0.048480547964572906
+        total_loss: 770611216384.0
+        vf_explained_var: -4.7683716530855236e-08
+        vf_loss: 770611216384.0
+    load_time_ms: 0.891
+    num_steps_sampled: 7875
+    num_steps_trained: 7875
+    sample_time_ms: 1653.033
+    update_time_ms: 3.438
+  iterations_since_restore: 35
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 23.9
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.538975746484867
+    mean_inference_ms: 0.6850948959183963
+    mean_processing_ms: 0.4890714631662813
+  time_since_restore: 61.17311239242554
+  time_this_iter_s: 1.770369052886963
+  time_total_s: 61.17311239242554
+  timestamp: 1744210926
+  timesteps_since_restore: 7875
+  timesteps_this_iter: 225
+  timesteps_total: 7875
+  training_iteration: 35
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     35 |          61.1731 |        7875 |  2.24855 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-12
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 3.45220614560468
+  episode_reward_mean: 1.939578189511714
+  episode_reward_min: 1.0902642386106207
+  episodes_this_iter: 5
+  episodes_total: 190
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 86.591
+    learner:
+      default_policy:
+        cur_kl_coeff: 3.814697322468419e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.409793853759766
+        entropy_coeff: 0.0
+        kl: 0.01292642392218113
+        policy_loss: -0.06618644297122955
+        total_loss: 665767313408.0
+        vf_explained_var: 4.7683716530855236e-08
+        vf_loss: 665767313408.0
+    load_time_ms: 0.889
+    num_steps_sampled: 8550
+    num_steps_trained: 8550
+    sample_time_ms: 1735.479
+    update_time_ms: 3.415
+  iterations_since_restore: 38
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 30.766666666666666
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.591034714911879
+    mean_inference_ms: 0.6914367258456623
+    mean_processing_ms: 0.4952828285099153
+  time_since_restore: 66.66193413734436
+  time_this_iter_s: 1.922900915145874
+  time_total_s: 66.66193413734436
+  timestamp: 1744210932
+  timesteps_since_restore: 8550
+  timesteps_this_iter: 225
+  timesteps_total: 8550
+  training_iteration: 38
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     38 |          66.6619 |        8550 |  1.93958 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-19
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 3.22347515665391
+  episode_reward_mean: 1.6911476301159343
+  episode_reward_min: 1.074126452679417
+  episodes_this_iter: 5
+  episodes_total: 210
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 85.261
+    learner:
+      default_policy:
+        cur_kl_coeff: 3.814697322468419e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.0281925201416
+        entropy_coeff: 0.0
+        kl: 0.009984812699258327
+        policy_loss: -0.04578954726457596
+        total_loss: 703192170496.0
+        vf_explained_var: -2.3841858265427618e-08
+        vf_loss: 703192170496.0
+    load_time_ms: 0.869
+    num_steps_sampled: 9450
+    num_steps_trained: 9450
+    sample_time_ms: 1729.683
+    update_time_ms: 3.542
+  iterations_since_restore: 42
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 24.8
+    ram_util_percent: 75.9
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.6701836584662475
+    mean_inference_ms: 0.7019938741522037
+    mean_processing_ms: 0.5042823372948905
+  time_since_restore: 73.46134996414185
+  time_this_iter_s: 1.8448021411895752
+  time_total_s: 73.46134996414185
+  timestamp: 1744210939
+  timesteps_since_restore: 9450
+  timesteps_this_iter: 225
+  timesteps_total: 9450
+  training_iteration: 42
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     42 |          73.4613 |        9450 |  1.69115 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-24
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 2.402504851860239
+  episode_reward_mean: 1.5436211742934134
+  episode_reward_min: 0.9797506046044452
+  episodes_this_iter: 5
+  episodes_total: 225
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 89.957
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.9073486612342094e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 20.167062759399414
+        entropy_coeff: 0.0
+        kl: 0.010679955594241619
+        policy_loss: -0.050328485667705536
+        total_loss: 649045344256.0
+        vf_explained_var: 2.3841858265427618e-08
+        vf_loss: 649045344256.0
+    load_time_ms: 0.965
+    num_steps_sampled: 10125
+    num_steps_trained: 10125
+    sample_time_ms: 1686.196
+    update_time_ms: 3.733
+  iterations_since_restore: 45
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 29.066666666666666
+    ram_util_percent: 75.9
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.707076600395435
+    mean_inference_ms: 0.7075530153099281
+    mean_processing_ms: 0.5084025036938374
+  time_since_restore: 79.01775169372559
+  time_this_iter_s: 1.6875
+  time_total_s: 79.01775169372559
+  timestamp: 1744210944
+  timesteps_since_restore: 10125
+  timesteps_this_iter: 225
+  timesteps_total: 10125
+  training_iteration: 45
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     45 |          79.0178 |       10125 |  1.54362 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-30
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 2.3829071590445214
+  episode_reward_mean: 1.4199463022165544
+  episode_reward_min: 0.8769340876549384
+  episodes_this_iter: 5
+  episodes_total: 240
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 83.755
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.9073486612342094e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.815582275390625
+        entropy_coeff: 0.0
+        kl: 0.011528560891747475
+        policy_loss: -0.05062004178762436
+        total_loss: 686981513216.0
+        vf_explained_var: 0.0
+        vf_loss: 686981513216.0
+    load_time_ms: 0.914
+    num_steps_sampled: 10800
+    num_steps_trained: 10800
+    sample_time_ms: 1678.355
+    update_time_ms: 3.605
+  iterations_since_restore: 48
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 28.5
+    ram_util_percent: 75.9
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.744147853524569
+    mean_inference_ms: 0.7128861325711519
+    mean_processing_ms: 0.511811988664162
+  time_since_restore: 84.36113262176514
+  time_this_iter_s: 1.7628190517425537
+  time_total_s: 84.36113262176514
+  timestamp: 1744210950
+  timesteps_since_restore: 10800
+  timesteps_this_iter: 225
+  timesteps_total: 10800
+  training_iteration: 48
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     48 |          84.3611 |       10800 |  1.41995 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-36
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 2.0163488242804113
+  episode_reward_mean: 1.286996873476341
+  episode_reward_min: 0.8769340876549384
+  episodes_this_iter: 5
+  episodes_total: 260
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 79.092
+    learner:
+      default_policy:
+        cur_kl_coeff: 9.536743306171047e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.28523826599121
+        entropy_coeff: 0.0
+        kl: 0.013348606415092945
+        policy_loss: -0.05459268018603325
+        total_loss: 618243162112.0
+        vf_explained_var: 5.960464477539063e-08
+        vf_loss: 618243162112.0
+    load_time_ms: 0.879
+    num_steps_sampled: 11700
+    num_steps_trained: 11700
+    sample_time_ms: 1580.594
+    update_time_ms: 3.396
+  iterations_since_restore: 52
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.05
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.790541812475355
+    mean_inference_ms: 0.7192571858591766
+    mean_processing_ms: 0.5156541169297223
+  time_since_restore: 90.12971568107605
+  time_this_iter_s: 1.474581003189087
+  time_total_s: 90.12971568107605
+  timestamp: 1744210956
+  timesteps_since_restore: 11700
+  timesteps_this_iter: 225
+  timesteps_total: 11700
+  training_iteration: 52
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     52 |          90.1297 |       11700 |    1.287 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-42
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.6943066214085387
+  episode_reward_mean: 1.183532061710271
+  episode_reward_min: 0.7340099478055034
+  episodes_this_iter: 5
+  episodes_total: 280
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 73.693
+    learner:
+      default_policy:
+        cur_kl_coeff: 4.7683716530855236e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 18.68316078186035
+        entropy_coeff: 0.0
+        kl: 0.019223874434828758
+        policy_loss: -0.06203130632638931
+        total_loss: 624422682624.0
+        vf_explained_var: 1.1920929132713809e-08
+        vf_loss: 624422682624.0
+    load_time_ms: 0.8
+    num_steps_sampled: 12600
+    num_steps_trained: 12600
+    sample_time_ms: 1464.294
+    update_time_ms: 3.135
+  iterations_since_restore: 56
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.2
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.799637769507801
+    mean_inference_ms: 0.7198490357255589
+    mean_processing_ms: 0.5159675706371242
+  time_since_restore: 96.33028221130371
+  time_this_iter_s: 1.465632677078247
+  time_total_s: 96.33028221130371
+  timestamp: 1744210962
+  timesteps_since_restore: 12600
+  timesteps_this_iter: 225
+  timesteps_total: 12600
+  training_iteration: 56
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     56 |          96.3303 |       12600 |  1.18353 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-48
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.6854791402322973
+  episode_reward_mean: 1.1025134474479186
+  episode_reward_min: 0.6960283361816341
+  episodes_this_iter: 5
+  episodes_total: 300
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 75.362
+    learner:
+      default_policy:
+        cur_kl_coeff: 4.7683716530855236e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.040142059326172
+        entropy_coeff: 0.0
+        kl: 0.04302011802792549
+        policy_loss: -0.07491771876811981
+        total_loss: 661523922944.0
+        vf_explained_var: 7.152557657263969e-08
+        vf_loss: 661523922944.0
+    load_time_ms: 0.852
+    num_steps_sampled: 13500
+    num_steps_trained: 13500
+    sample_time_ms: 1437.349
+    update_time_ms: 3.279
+  iterations_since_restore: 60
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.75
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.793137834169275
+    mean_inference_ms: 0.7183137696943072
+    mean_processing_ms: 0.5150266989291253
+  time_since_restore: 102.41788172721863
+  time_this_iter_s: 1.5180292129516602
+  time_total_s: 102.41788172721863
+  timestamp: 1744210968
+  timesteps_since_restore: 13500
+  timesteps_this_iter: 225
+  timesteps_total: 13500
+  training_iteration: 60
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     60 |          102.418 |       13500 |  1.10251 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-02-54
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.500488359027107
+  episode_reward_mean: 1.018789898762427
+  episode_reward_min: 0.6960283361816341
+  episodes_this_iter: 5
+  episodes_total: 320
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 74.973
+    learner:
+      default_policy:
+        cur_kl_coeff: 7.152557657263969e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.376651763916016
+        entropy_coeff: 0.0
+        kl: 0.010671953670680523
+        policy_loss: -0.05404789373278618
+        total_loss: 692431683584.0
+        vf_explained_var: -4.7683716530855236e-08
+        vf_loss: 692431683584.0
+    load_time_ms: 0.838
+    num_steps_sampled: 14400
+    num_steps_trained: 14400
+    sample_time_ms: 1445.542
+    update_time_ms: 3.278
+  iterations_since_restore: 64
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.0
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.777018310101144
+    mean_inference_ms: 0.7144539075675397
+    mean_processing_ms: 0.5128371109296984
+  time_since_restore: 108.52565050125122
+  time_this_iter_s: 1.4547295570373535
+  time_total_s: 108.52565050125122
+  timestamp: 1744210974
+  timesteps_since_restore: 14400
+  timesteps_this_iter: 225
+  timesteps_total: 14400
+  training_iteration: 64
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     64 |          108.526 |       14400 |  1.01879 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-00
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.2614267520754605
+  episode_reward_mean: 0.9604985836195883
+  episode_reward_min: 0.5980746050320204
+  episodes_this_iter: 5
+  episodes_total: 340
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 74.412
+    learner:
+      default_policy:
+        cur_kl_coeff: 7.152557657263969e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.306684494018555
+        entropy_coeff: 0.0
+        kl: 0.012515892274677753
+        policy_loss: -0.05182188004255295
+        total_loss: 735762841600.0
+        vf_explained_var: 4.7683716530855236e-08
+        vf_loss: 735762841600.0
+    load_time_ms: 0.84
+    num_steps_sampled: 15300
+    num_steps_trained: 15300
+    sample_time_ms: 1444.112
+    update_time_ms: 3.391
+  iterations_since_restore: 68
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 18.866666666666664
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.745629712736238
+    mean_inference_ms: 0.7081383148210536
+    mean_processing_ms: 0.5093919326002899
+  time_since_restore: 114.62541222572327
+  time_this_iter_s: 1.6564252376556396
+  time_total_s: 114.62541222572327
+  timestamp: 1744210980
+  timesteps_since_restore: 15300
+  timesteps_this_iter: 225
+  timesteps_total: 15300
+  training_iteration: 68
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     68 |          114.625 |       15300 | 0.960499 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-06
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.2614267520754605
+  episode_reward_mean: 0.910286289094105
+  episode_reward_min: 0.5980746050320204
+  episodes_this_iter: 5
+  episodes_total: 360
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 74.021
+    learner:
+      default_policy:
+        cur_kl_coeff: 7.152557657263969e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.279653549194336
+        entropy_coeff: 0.0
+        kl: 0.02591189369559288
+        policy_loss: -0.0643313080072403
+        total_loss: 828166504448.0
+        vf_explained_var: 8.34465012644614e-08
+        vf_loss: 828166504448.0
+    load_time_ms: 0.803
+    num_steps_sampled: 16200
+    num_steps_trained: 16200
+    sample_time_ms: 1431.99
+    update_time_ms: 3.377
+  iterations_since_restore: 72
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 18.266666666666666
+    ram_util_percent: 75.8
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.717626365155895
+    mean_inference_ms: 0.7020462439954673
+    mean_processing_ms: 0.5062550634012519
+  time_since_restore: 120.70449352264404
+  time_this_iter_s: 1.4796116352081299
+  time_total_s: 120.70449352264404
+  timestamp: 1744210986
+  timesteps_since_restore: 16200
+  timesteps_this_iter: 225
+  timesteps_total: 16200
+  training_iteration: 72
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     72 |          120.704 |       16200 | 0.910286 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-11
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.196019101475864
+  episode_reward_mean: 0.8749263230860863
+  episode_reward_min: 0.5980746050320204
+  episodes_this_iter: 5
+  episodes_total: 375
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 80.77
+    learner:
+      default_policy:
+        cur_kl_coeff: 7.152557657263969e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.5433292388916
+        entropy_coeff: 0.0
+        kl: 0.01568748615682125
+        policy_loss: -0.06622005999088287
+        total_loss: 882699337728.0
+        vf_explained_var: -2.3841858265427618e-08
+        vf_loss: 882699337728.0
+    load_time_ms: 0.836
+    num_steps_sampled: 16875
+    num_steps_trained: 16875
+    sample_time_ms: 1482.289
+    update_time_ms: 3.655
+  iterations_since_restore: 75
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 18.933333333333334
+    ram_util_percent: 76.0
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.70172101331784
+    mean_inference_ms: 0.6982303741229668
+    mean_processing_ms: 0.5044541489958831
+  time_since_restore: 125.68793988227844
+  time_this_iter_s: 1.5383586883544922
+  time_total_s: 125.68793988227844
+  timestamp: 1744210991
+  timesteps_since_restore: 16875
+  timesteps_this_iter: 225
+  timesteps_total: 16875
+  training_iteration: 75
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     75 |          125.688 |       16875 | 0.874926 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-18
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.1580180448989454
+  episode_reward_mean: 0.840286701673103
+  episode_reward_min: 0.5980746050320204
+  episodes_this_iter: 5
+  episodes_total: 395
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 82.933
+    learner:
+      default_policy:
+        cur_kl_coeff: 7.152557657263969e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.278202056884766
+        entropy_coeff: 0.0
+        kl: 0.019155655056238174
+        policy_loss: -0.0467732809484005
+        total_loss: 997264850944.0
+        vf_explained_var: 7.152557657263969e-08
+        vf_loss: 997264850944.0
+    load_time_ms: 0.881
+    num_steps_sampled: 17775
+    num_steps_trained: 17775
+    sample_time_ms: 1506.627
+    update_time_ms: 3.529
+  iterations_since_restore: 79
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 20.1
+    ram_util_percent: 76.3
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.684643816660241
+    mean_inference_ms: 0.6938761684152683
+    mean_processing_ms: 0.5024343546958164
+  time_since_restore: 132.12475991249084
+  time_this_iter_s: 1.500333547592163
+  time_total_s: 132.12475991249084
+  timestamp: 1744210998
+  timesteps_since_restore: 17775
+  timesteps_this_iter: 225
+  timesteps_total: 17775
+  training_iteration: 79
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     79 |          132.125 |       17775 | 0.840287 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-24
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 1.1580180448989454
+  episode_reward_mean: 0.8072644887100696
+  episode_reward_min: 0.5980746050320204
+  episodes_this_iter: 5
+  episodes_total: 415
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 75.787
+    learner:
+      default_policy:
+        cur_kl_coeff: 7.152557657263969e-08
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.439472198486328
+        entropy_coeff: 0.0
+        kl: 0.02097143791615963
+        policy_loss: -0.06843223422765732
+        total_loss: 1165634830336.0
+        vf_explained_var: 0.0
+        vf_loss: 1165634830336.0
+    load_time_ms: 0.877
+    num_steps_sampled: 18675
+    num_steps_trained: 18675
+    sample_time_ms: 1504.209
+    update_time_ms: 3.422
+  iterations_since_restore: 83
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.05
+    ram_util_percent: 76.2
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.67055553381874
+    mean_inference_ms: 0.6900208565216381
+    mean_processing_ms: 0.5007998587483149
+  time_since_restore: 138.44829320907593
+  time_this_iter_s: 1.596198320388794
+  time_total_s: 138.44829320907593
+  timestamp: 1744211004
+  timesteps_since_restore: 18675
+  timesteps_this_iter: 225
+  timesteps_total: 18675
+  training_iteration: 83
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     83 |          138.448 |       18675 | 0.807264 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-30
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 0.9908096114402236
+  episode_reward_mean: 0.7685464252670487
+  episode_reward_min: 0.5356662151209652
+  episodes_this_iter: 5
+  episodes_total: 435
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 73.852
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.0728835775353218e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.033771514892578
+        entropy_coeff: 0.0
+        kl: 0.023035451769828796
+        policy_loss: -0.0578945092856884
+        total_loss: 1236063354880.0
+        vf_explained_var: 0.0
+        vf_loss: 1236063354880.0
+    load_time_ms: 0.848
+    num_steps_sampled: 19575
+    num_steps_trained: 19575
+    sample_time_ms: 1484.835
+    update_time_ms: 3.156
+  iterations_since_restore: 87
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 19.85
+    ram_util_percent: 76.3
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.662235144985062
+    mean_inference_ms: 0.6868022118656498
+    mean_processing_ms: 0.4997338121035396
+  time_since_restore: 144.6142222881317
+  time_this_iter_s: 1.5581693649291992
+  time_total_s: 144.6142222881317
+  timestamp: 1744211010
+  timesteps_since_restore: 19575
+  timesteps_this_iter: 225
+  timesteps_total: 19575
+  training_iteration: 87
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     87 |          144.614 |       19575 | 0.768546 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-36
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 0.9495121596564184
+  episode_reward_mean: 0.727275138500692
+  episode_reward_min: 0.525577002262273
+  episodes_this_iter: 5
+  episodes_total: 455
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 73.955
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.0728835775353218e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.11336898803711
+        entropy_coeff: 0.0
+        kl: 0.029058516025543213
+        policy_loss: -0.05738430097699165
+        total_loss: 1334624124928.0
+        vf_explained_var: -4.7683716530855236e-08
+        vf_loss: 1334624124928.0
+    load_time_ms: 0.843
+    num_steps_sampled: 20475
+    num_steps_trained: 20475
+    sample_time_ms: 1470.375
+    update_time_ms: 3.274
+  iterations_since_restore: 91
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 18.73333333333333
+    ram_util_percent: 76.3
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.654321395485068
+    mean_inference_ms: 0.6839588431941636
+    mean_processing_ms: 0.4988331378800575
+  time_since_restore: 150.6949896812439
+  time_this_iter_s: 1.4847307205200195
+  time_total_s: 150.6949896812439
+  timestamp: 1744211016
+  timesteps_since_restore: 20475
+  timesteps_this_iter: 225
+  timesteps_total: 20475
+  training_iteration: 91
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     91 |          150.695 |       20475 | 0.727275 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-42
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 0.9495121596564184
+  episode_reward_mean: 0.6964359082444115
+  episode_reward_min: 0.4635728953653536
+  episodes_this_iter: 5
+  episodes_total: 475
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 74.275
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.0728835775353218e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 18.96112060546875
+        entropy_coeff: 0.0
+        kl: 0.023323077708482742
+        policy_loss: -0.049573712050914764
+        total_loss: 1549015973888.0
+        vf_explained_var: 0.0
+        vf_loss: 1549015973888.0
+    load_time_ms: 0.85
+    num_steps_sampled: 21375
+    num_steps_trained: 21375
+    sample_time_ms: 1439.71
+    update_time_ms: 3.343
+  iterations_since_restore: 95
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 21.8
+    ram_util_percent: 76.2
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.644631962273183
+    mean_inference_ms: 0.6812658124449947
+    mean_processing_ms: 0.49784939403713024
+  time_since_restore: 156.7987723350525
+  time_this_iter_s: 1.5814433097839355
+  time_total_s: 156.7987723350525
+  timestamp: 1744211022
+  timesteps_since_restore: 21375
+  timesteps_this_iter: 225
+  timesteps_total: 21375
+  training_iteration: 95
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     95 |          156.799 |       21375 | 0.696436 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-49
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 0.9495121596564184
+  episode_reward_mean: 0.649609218610136
+  episode_reward_min: 0.43617148675075695
+  episodes_this_iter: 5
+  episodes_total: 495
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 75.582
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.0728835775353218e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 18.85281753540039
+        entropy_coeff: 0.0
+        kl: 0.04201815649867058
+        policy_loss: -0.06849569827318192
+        total_loss: 1738475962368.0
+        vf_explained_var: -1.1920929132713809e-08
+        vf_loss: 1738475962368.0
+    load_time_ms: 0.855
+    num_steps_sampled: 22275
+    num_steps_trained: 22275
+    sample_time_ms: 1446.345
+    update_time_ms: 3.273
+  iterations_since_restore: 99
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 18.299999999999997
+    ram_util_percent: 76.2
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.633873055175063
+    mean_inference_ms: 0.678623221043846
+    mean_processing_ms: 0.4967222158291562
+  time_since_restore: 162.97755908966064
+  time_this_iter_s: 1.5600690841674805
+  time_total_s: 162.97755908966064
+  timestamp: 1744211029
+  timesteps_since_restore: 22275
+  timesteps_this_iter: 225
+  timesteps_total: 22275
+  training_iteration: 99
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+--------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | RUNNING  | 35.3.43.231:287661 |     99 |          162.978 |       22275 | 0.649609 |
++---------------------------------+----------+--------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_70fd5cda:
+  custom_metrics: {}
+  date: 2025-04-09_11-03-50
+  done: true
+  episode_len_mean: 45.0
+  episode_reward_max: 0.9495121596564184
+  episode_reward_mean: 0.641038477208919
+  episode_reward_min: 0.43617148675075695
+  episodes_this_iter: 5
+  episodes_total: 500
+  experiment_id: 8c934178b68844728dd9742690488a20
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 75.524
+    learner:
+      default_policy:
+        cur_kl_coeff: 1.6093254373572563e-07
+        cur_lr: 4.999999873689376e-05
+        entropy: 19.079790115356445
+        entropy_coeff: 0.0
+        kl: 0.00910396408289671
+        policy_loss: -0.051802732050418854
+        total_loss: 1765144526848.0
+        vf_explained_var: -9.536743306171047e-08
+        vf_loss: 1765144526848.0
+    load_time_ms: 0.86
+    num_steps_sampled: 22500
+    num_steps_trained: 22500
+    sample_time_ms: 1457.403
+    update_time_ms: 3.256
+  iterations_since_restore: 100
+  node_ip: 35.3.43.231
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 21.5
+    ram_util_percent: 76.2
+  pid: 287661
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.631418717279016
+    mean_inference_ms: 0.6780110253856472
+    mean_processing_ms: 0.4964713954529229
+  time_since_restore: 164.60936665534973
+  time_this_iter_s: 1.631807565689087
+  time_total_s: 164.60936665534973
+  timestamp: 1744211030
+  timesteps_since_restore: 22500
+  timesteps_this_iter: 225
+  timesteps_total: 22500
+  training_iteration: 100
+  trial_id: 70fd5cda
+  
+== Status ==
+Memory usage on this node: 11.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 0/2 CPUs, 0/0 GPUs, 0.0/2.1 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 TERMINATED)
++---------------------------------+------------+-------+--------+------------------+-------------+----------+
+| Trial name                      | status     | loc   |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+------------+-------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_70fd5cda | TERMINATED |       |    100 |          164.609 |       22500 | 0.641038 |
++---------------------------------+------------+-------+--------+------------------+-------------+----------+
+
+
+[2m[36m(pid=287660)[0m ./emissions_output/fleet_control_20250409-1101051744210865.1444275-0_emission.csv ./emissions_output

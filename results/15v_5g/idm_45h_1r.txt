@@ -1,0 +1,9 @@
+Experiment running
+Round 0, return: 849.2867014942564
+./emissions_output/fleet_control_20250408-1941391744155699.9808102-0_emission.csv ./emissions_output
+Average, std returns: 849.2867014942564, 0.0
+Average, std velocities: 8.064531385637608, 0.0
+Average, std outflows: 880.0, 0.0
+Total time: 0.13703489303588867
+steps/second: 541.2368386255927
+Experiment finished

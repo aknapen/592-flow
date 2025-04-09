@@ -1,0 +1,154 @@
+flags Namespace(checkpoint_path=None, exp_config='flowagent', num_cpus=1, num_steps=5, rl_trainer='rllib', rollout_size=1000)
+== Status ==
+Memory usage on this node: 10.7/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/1.66 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+-------+
+| Trial name                      | status   | loc   |
+|---------------------------------+----------+-------|
+| PPO_FleetControlEnv-v0_2efe4f20 | RUNNING  |       |
++---------------------------------+----------+-------+
+
+
+[2m[36m(pid=232371)[0m 2025-04-08 19:57:12,445	INFO trainer.py:371 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=232371)[0m 2025-04-08 19:57:12,700	INFO trainer.py:512 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=232371)[0m 2025-04-08 19:57:17,178	WARNING util.py:45 -- Install gputil for GPU system monitoring.
+Result for PPO_FleetControlEnv-v0_2efe4f20:
+  custom_metrics: {}
+  date: 2025-04-08_19-57-19
+  done: false
+  episode_len_mean: 45.0
+  episode_reward_max: 550.8123621499954
+  episode_reward_mean: 550.8123621499954
+  episode_reward_min: 550.8123621499954
+  episodes_this_iter: 1
+  episodes_total: 1
+  experiment_id: b6767f75ba3940da848432a4fe5cdd39
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 311.61
+    learner:
+      default_policy:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 4.999999873689376e-05
+        entropy: 21.30617904663086
+        entropy_coeff: 0.0
+        kl: 0.00034289888571947813
+        policy_loss: -0.024780120700597763
+        total_loss: 51467.5703125
+        vf_explained_var: -4.601478576660156e-05
+        vf_loss: 51467.59375
+    load_time_ms: 71.448
+    num_steps_sampled: 45
+    num_steps_trained: 45
+    sample_time_ms: 1225.214
+    update_time_ms: 942.92
+  iterations_since_restore: 1
+  node_ip: 192.168.0.24
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf:
+    cpu_util_percent: 21.424999999999997
+    ram_util_percent: 73.575
+  pid: 232371
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.034742148026176
+    mean_inference_ms: 1.3781319493832795
+    mean_processing_ms: 0.4477863726408585
+  time_since_restore: 2.617295026779175
+  time_this_iter_s: 2.617295026779175
+  time_total_s: 2.617295026779175
+  timestamp: 1744156639
+  timesteps_since_restore: 45
+  timesteps_this_iter: 45
+  timesteps_total: 45
+  training_iteration: 1
+  trial_id: 2efe4f20
+  
+== Status ==
+Memory usage on this node: 11.3/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 2/2 CPUs, 0/0 GPUs, 0.0/1.66 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 RUNNING)
++---------------------------------+----------+---------------------+--------+------------------+-------------+----------+
+| Trial name                      | status   | loc                 |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+----------+---------------------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_2efe4f20 | RUNNING  | 192.168.0.24:232371 |      1 |           2.6173 |          45 |  550.812 |
++---------------------------------+----------+---------------------+--------+------------------+-------------+----------+
+
+
+Result for PPO_FleetControlEnv-v0_2efe4f20:
+  custom_metrics: {}
+  date: 2025-04-08_19-57-21
+  done: true
+  episode_len_mean: 45.0
+  episode_reward_max: 550.8123621499954
+  episode_reward_mean: 199.4213078539497
+  episode_reward_min: 70.72678615631708
+  episodes_this_iter: 1
+  episodes_total: 5
+  experiment_id: b6767f75ba3940da848432a4fe5cdd39
+  experiment_tag: '0'
+  hostname: chiste
+  info:
+    grad_time_ms: 76.124
+    learner:
+      default_policy:
+        cur_kl_coeff: 0.012500000186264515
+        cur_lr: 4.999999873689376e-05
+        entropy: 21.301862716674805
+        entropy_coeff: 0.0
+        kl: 0.00028081072377972305
+        policy_loss: -0.023285889998078346
+        total_loss: 1062.4385986328125
+        vf_explained_var: 3.68952751159668e-05
+        vf_loss: 1062.4620361328125
+    load_time_ms: 14.977
+    num_steps_sampled: 225
+    num_steps_trained: 225
+    sample_time_ms: 461.232
+    update_time_ms: 191.652
+  iterations_since_restore: 5
+  node_ip: 192.168.0.24
+  num_healthy_workers: 1
+  off_policy_estimator: {}
+  perf: {}
+  pid: 232371
+  policy_reward_max: {}
+  policy_reward_mean: {}
+  policy_reward_min: {}
+  sampler_perf:
+    mean_env_wait_ms: 5.027845934404882
+    mean_inference_ms: 0.9707139761963051
+    mean_processing_ms: 0.47952072267660945
+  time_since_restore: 3.7961437702178955
+  time_this_iter_s: 0.27548742294311523
+  time_total_s: 3.7961437702178955
+  timestamp: 1744156641
+  timesteps_since_restore: 225
+  timesteps_this_iter: 45
+  timesteps_total: 225
+  training_iteration: 5
+  trial_id: 2efe4f20
+  
+== Status ==
+Memory usage on this node: 11.3/15.4 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 0/2 CPUs, 0/0 GPUs, 0.0/1.66 GiB heap, 0.0/0.1 GiB objects
+Result logdir: /home/sitota/ray_results/fleet_control
+Number of trials: 1 (1 TERMINATED)
++---------------------------------+------------+-------+--------+------------------+-------------+----------+
+| Trial name                      | status     | loc   |   iter |   total time (s) |   timesteps |   reward |
+|---------------------------------+------------+-------+--------+------------------+-------------+----------|
+| PPO_FleetControlEnv-v0_2efe4f20 | TERMINATED |       |      5 |          3.79614 |         225 |  199.421 |
++---------------------------------+------------+-------+--------+------------------+-------------+----------+
+
+
+[2m[36m(pid=232372)[0m ./emissions_output/fleet_control_20250408-1957171744156637.0796733-0_emission.csv ./emissions_output
