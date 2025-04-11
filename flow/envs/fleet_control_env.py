@@ -41,7 +41,11 @@ class FleetControlEnv(Env):
         self.total_mpg = 0
         self.total_distance = 0
         self.total_fuel = 0.0000001
-        self.rlTraining  = True
+        self.threshold = 60
+        self.rlTraining  = False
+        self.valueofReward = 0
+        self.total_distances = {}
+        self.total_fuels = {}
 
         
         self.prev_distances = np.zeros(env_params.additional_params["num_vehicles"])
@@ -88,6 +92,10 @@ class FleetControlEnv(Env):
         self.emission_weight = 1.0
         self.route_weight = 1.0
         self.all_vechicles = self.k.vehicle.get_ids()
+
+        for v in range(ADDITIONAL_ENV_PARAMS["num_vehicles"]):
+            self.total_distances['rl_{}'.format(v)] = 0
+            self.total_fuels['rl_{}'.format(v)] = 0.0000001
         # print("all vechicles", self.all_vechicles)
 
         # print("Vehicle routes", self.k.vehicle.get_route(self.k.vehicle.get_rl_ids()))
@@ -384,17 +392,50 @@ class FleetControlEnv(Env):
 
         # Emission reward is MPG metric (does this need to be scaled by time?)
         # distance_traveled = self.compute_distance_traveled(positions, self.prev_positions)
-        
-        # Avoid division by zero
         fuels = np.array([self.k.vehicle.get_fuel_consumption(id) for id in ids])
-        fuel_consumed = np.sum(fuels)
+        
+        efficiencies = np.zeros(num_vehicles)
+        for i,id in enumerate(ids):
+            vehicle_num = int(id.split("_")[-1])
+            fuel = max(fuels[i], 0.000001)
+            efficiencies[vehicle_num] = min(distances[vehicle_num] / fuel, self.threshold)
+        print("efficiencies", efficiencies)
+        
+
+            # efficiencies[i] = min(distances[i] / (max(fuels[i], 0.000001)), self.threshold)
+        # Avoid division by zero
+        # fuel_dic = {}
+        # distance_dic = {}
+        # for id in ids:
+        #     fuel_dic[id] = self.k.vehicle.get_fuel_consumption(id)
+        #     vehicle_num = int(id.split("_")[-1])
+        #     distance_dic[id] = distances[vehicle_num]
+        # emission_rewards = np.array([distances[id] / max(fuels[id], 0.0001) for id in ids])
+        # fuels = np.array([self.k.vehicle.get_fuel_consumption(id) for id in ids])
+        # fuel_consumed = np.sum(fuels)
         # print('distances', distances, "fuel consumed", fuels)
         # emission_reward = np.sum(distances) / max(fuel_consumed, 0.0001)
+
+
+        # for i in range(len(ids)):
+        #     self.total_distances[ids[i]] += distance_dic[ids[i]]
+        #     self.total_fuels[ids[i]] += fuel_dic[ids[i]]
+
+        # efficiencies = np.zeros(num_vehicles)
+        # for i,k in enumerate(self.total_distances.keys()):
+        #     print("Vehicle", k, "total distance", self.total_distances[k], "total fuel", self.total_fuels[k], "div", self.total_distances[k] / self.total_fuels[k])
+        #     efficiencies[i] = min((self.total_distances[k] / self.total_fuels[k]), self.threshold)
+
         
-        self.total_distance += np.sum(distances)
-        self.total_fuel += fuel_consumed
+ 
         
-        valueofReward = self.total_distance / self.total_fuel
+        # self.valueofReward += np.sum(efficiences)
+
+        
+        # self.total_distance += np.sum(distances)
+        # self.total_fuel += fuel_consumed
+        
+        # valueofReward = self.total_distance / self.total_fuel
         
         # print("Vehicle Vel after accel:", self.k.vehicle.get_speed(ids))
         # print("Vehicle Fue:", fuels)
@@ -417,6 +458,7 @@ class FleetControlEnv(Env):
         # route_reward = np.sum(np.array([1 if reached else -1 for reached in destinations_reached]))
 
         self.tot_steps += 1
+        print("step:", self.tot_steps)
         # self.total_mpg += emission_reward
         # avg_reward = self.total_mpg/ self.tot_steps
         # self.returnReward += avg_reward
@@ -425,7 +467,9 @@ class FleetControlEnv(Env):
         # print ("Total Reward:", self.returnReward )
         # print("Emission reward:", emission_reward)
         # print("value of reward", valueofReward, "*************************************")
-        return valueofReward
+        return np.sum(efficiencies)
+        return np.mean(efficiencies)
+        # return efficiency
         # return self.emission_weight * emission_rewards + self.route_weight * route_reward
 
     def get_state(self):        
